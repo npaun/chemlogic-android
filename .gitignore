@@ -1,2 +1,2 @@
-android/bin/
+android/bin/**
 *.class
