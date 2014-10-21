@@ -1,6 +1,6 @@
 # Generated directories
-android/bin/
-android/gen/
+bin/
+gen/
 
 # Output files
 *.class
