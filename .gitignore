@@ -1,2 +1,9 @@
-android/bin/**
+# Generated directories
+android/bin/
+android/gen/
+
+# Output files
 *.class
+*.dex
+*.apk
+*.ap_
