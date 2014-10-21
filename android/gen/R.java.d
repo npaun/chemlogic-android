@@ -713,4 +713,9 @@
 /home/npaun/chemlogic-android/android/res/drawable-xxhdpi/ic_launcher.png \
 /home/npaun/chemlogic-android/android/res/values-v11/styles.xml \
 /home/npaun/chemlogic-android/android/res/menu/main.xml \
+/home/npaun/chemlogic-android/android/bin/res/drawable-hdpi/ic_launcher.png \
+/home/npaun/chemlogic-android/android/bin/res/drawable-mdpi/ic_launcher.png \
+/home/npaun/chemlogic-android/android/bin/res/drawable-mdpi/drawable-xhdpi \
+/home/npaun/chemlogic-android/android/bin/res/drawable-mdpi/drawable-xhdpi/ic_launcher.png \
+/home/npaun/chemlogic-android/android/bin/res/drawable-xxhdpi/ic_launcher.png \
 /home/npaun/chemlogic-android/android/bin/AndroidManifest.xml \
