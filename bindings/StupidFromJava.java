@@ -1,4 +1,6 @@
-package ca.nicholaspaun.cafeteria;
+package ca.nicholaspaun.chemlogic.bindings;
+
+import ca.nicholaspaun.chemlogic.prolog.*;
 import jp.ac.kobe_u.cs.prolog.lang.*;
 
 public class StupidFromJava {

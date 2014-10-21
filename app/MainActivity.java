@@ -1,5 +1,8 @@
 package ca.nicholaspaun.chemlogic.app;
 
+import ca.nicholaspaun.chemlogic.bindings.*;
+import ca.nicholaspaun.chemlogic.prolog.*;
+import ca.nicholaspaun.chemlogic.app.R;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
@@ -41,6 +46,17 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+    public void doQuery(View view)
+    {
+    	EditText editText = (EditText) findViewById(R.id.edit_query);
+    	String country = editText.getText().toString();
+    	String capital = StupidFromJava.getCapital(country);
+    	
+    	 TextView textElement = (TextView) findViewById(R.id.text_result);
+    	    textElement.setText("Tokyo says: " + capital); //leave this line to assign a specific text
+
+    }
 
 	/**
 	 * A placeholder fragment containing a simple view.
