@@ -15,5 +15,5 @@ app-clean:
 
 run-emu:
 	@echo "Please wait... the command may appear to hang."
-	emulator @droid-phone-5l &
+	emulator @chemlogic-dev &
 
