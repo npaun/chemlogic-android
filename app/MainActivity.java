@@ -1,4 +1,4 @@
-package ca.nicholaspaun.chemlogic.app20;
+package ca.nicholaspaun.chemlogic.app1;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
