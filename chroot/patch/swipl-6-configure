@@ -1,0 +1,74 @@
+--- pl-6.6.6/src/configure.in	2014-05-28 02:53:51.000000000 -0700
++++ patch/src/configure.in	2014-11-25 09:51:23.000000000 -0800
+@@ -1262,34 +1262,8 @@
+ AC_CHECK_FUNCS(clock_gettime)
+ 
+ AC_MSG_CHECKING(for pthread support for cpu clocks)
+-AC_TRY_RUN(
+-[
+-#include <stdio.h>
+-#include <pthread.h>
+-#include <time.h>
+-#include <stdlib.h>
+-#define ts2d(ts) \
+-	((double)(ts).tv_sec + (double)(ts).tv_nsec/(double)1000000000.0)
+-main()
+-{
+-  clockid_t clock_id;
+-  struct timespec ts = {1,1};
+-  if ( pthread_getcpuclockid(pthread_self(), &clock_id) != 0 )
+-  { perror("pthread_getcpuclockid");
+-    exit(1);
+-  }
+-  sleep(1);
+-  if ( clock_gettime(clock_id, &ts) != 0 )
+-  { perror("clock_gettime");
+-    exit(1);
+-  }
+-  fprintf(stderr, "Used %f sec\n", ts2d(ts));
+-  exit (ts.tv_sec == 0 ? 0 : 1);
+-}], ac_pthread_cpuclocks="yes"
+-    AC_MSG_RESULT(yes),
+-    AC_MSG_RESULT(no))
+ 
+-if test "x$ac_pthread_cpuclocks" = "xyes"; then
++if test "xTEST DISABLED" = "xyes"; then
+    AC_DEFINE(PTHREAD_CPUCLOCKS, 1,
+              [Define if you have pthread cpu clocks (glibc 2.4 and greater)])
+ else
+@@ -1302,33 +1276,8 @@
+    AC_MSG_RESULT(no))
+ 
+ AC_MSG_CHECKING(for syscall support for cpu clocks)
+-AC_TRY_RUN(
+-[
+-#include <stdio.h>
+-#include <time.h>
+-#include <sys/syscall.h>
+-#include <stdlib.h>
+-#define ts2d(ts) \
+-	((double)(ts).tv_sec + (double)(ts).tv_nsec/(double)1000000000.0)
+-main()
+-{ struct timespec ts0;
+-  struct timespec ts1;
+-  double t;
+-  if ( syscall(__NR_clock_gettime, CLOCK_THREAD_CPUTIME_ID, &ts0) )
+-    exit(1);
+-  sleep(1);
+-  syscall(__NR_clock_gettime, CLOCK_THREAD_CPUTIME_ID, &ts1);
+-  t = ts2d(ts1) - ts2d(ts0);
+-  fprintf(stderr, "sleep(1) used %f sec\n", t);
+-  if ( t > 0.5 )
+-  { exit(1);
+-  }
+-  exit(0);
+-}], ac_linux_cpuclocks="yes"
+-    AC_MSG_RESULT(yes),
+-    AC_MSG_RESULT(no))
+ 
+-if test "x$ac_linux_cpuclocks" = "xyes"; then
++if test "xTEST DISABLED" = "xyes"; then
+    AC_DEFINE(LINUX_CPUCLOCKS, 1,
+              [Define if you have Linux cpu clocks (2.6.12 and greater)])
+ else
+
