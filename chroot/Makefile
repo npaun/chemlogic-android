@@ -18,7 +18,10 @@ all: compile-swipl bootstrap compile-chemlogic
 .SUFFIXES: 
 
 ##### EXTRACT REQUIRED BUILD FILES ######
-extract: build/$(swipl.dir) build/$(chemlogic.dir) build/$($(ROOTFS).dir) build/$($(TOOLCHAIN).dir)
+extract: build build/$(swipl.dir) build/$(chemlogic.dir) build/$($(ROOTFS).dir) build/$($(TOOLCHAIN).dir)
+
+build:
+	mkdir -p $@
 
 build/$(swipl.dir): distfiles/$(swipl.file)
 	tar -xf $< -C build
@@ -134,7 +137,7 @@ DIRS = bin lib pl etc chemlogic
 DIRS_PATH = $(addprefix buildout/angstrom/, ${DIRS})
 mkdir: ${DIRS_PATH} 
 ${DIRS_PATH}:
-	- mkdir ${DIRS_PATH}
+	- mkdir -p ${DIRS_PATH}
 
 ###### BOOTSTRAP PROLOG USING ANDROID EMULATOR ######
 
