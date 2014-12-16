@@ -13,7 +13,7 @@ TOOLCHAIN = toolchain.host-$(HOST).build-$(BUILD)
 
 
 ############ MASTER TARGETS ###########
-all: compile-swipl bootstrap compile-chemlogic
+all: compile-swipl bootstrap
 
 .SUFFIXES: 
 
@@ -45,19 +45,6 @@ build/$($(TOOLCHAIN).dir): distfiles/$($(TOOLCHAIN).file)
 	mkdir -p $@
 	tar -xf $< -C $@
 	touch $@
-
-##### COMPILE SWI-PROLOG FOR BUILD SYSTEM (CROSS-COMPILER) ####
-BUILD_SWIPL_PREFIX = `readlink -f ../../swipl-build`
-
-compile-build-swipl: build/build-$(swipl.dir)
-	cd build/build-$(swipl.dir); \
-	./configure --prefix ${BUILD_SWIPL_PREFIX}; \
-	make; \
-	make install; \
-	export PATH=${BUILD_SWIPL_PREFIX}/bin/:${PATH}; \
-	cd packages/clpqr/; \
-	./configure; \
-	make install
 
 
 ##### COMPILE SWI-PROLOG FOR HOST SYSTEM (ANDROID DEVICE) #####
@@ -167,16 +154,10 @@ clean-bootstrap:
 	rm -r buildout/angstrom/plboot
 	rm    buildout/angstrom/etc/*.bootstrap
 
-###### COMPILE CHEMLOGIC ######
-compile-chemlogic buildout/angstrom/chemlogic/chemcli: build/$(chemlogic.dir)
-	cd  $<; \
-	make cli DEST=../../buildout/angstrom/chemlogic/
-
 
 
 ###### CLEAN BUILD WORK ###########
 clean:
 	- rm -r build/*
 	- rm -r buildout/angstrom/*
-	- rm -r swipl-build/*
 
