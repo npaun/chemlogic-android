@@ -4,4 +4,8 @@ export PATH=/bin:/pl:/chemlogic
 export LD_LIBRARY_PATH=/lib:/pl
 
 cd /pl
-swipl -O -o swipl.prc -b ../plboot/init.pl
+swipl -O -o swipl.prc -b ../plboot/swipl/init.pl
+
+busybox.nosuid mkdir /chemlogic
+cd /plboot/library
+echo boot_chemlogic. | swipl -l /etc/make.bootstrap

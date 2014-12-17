@@ -1,0 +1,16 @@
+boot_chemlogic :-
+	assertz(library_directory('/plboot/library')),
+	assertz(library_directory('/plboot/library/clpqr')),
+
+	assertz(autoload_path(library('/plboot/library'))),
+	assertz(autoload_path(library('/plboot/library/clpqr'))),
+
+	make_library_index('.'),
+	reload_library_index,
+
+	consult('/plboot/chemlogic/cli/chemcli.in'),
+	cl_parse_all,
+
+	qsave_program('/chemlogic/chemcli'),
+
+	halt.
