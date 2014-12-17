@@ -80,7 +80,7 @@ build/$(swipl.dir)/src/mkvmi: build/$(swipl.dir)/src/mkvmi.c
 
 
 
-ANGSTROM_LIBS = ld-2.19-2014.04.so ld-linux.so.3 libc.so.6 libdl.so.2 libgcc_s.so.1 libm.so.6 libpthread.so.0 librt.so.1
+ANGSTROM_LIBS = ld-linux.so.3 libc.so.6 libdl.so.2 libgcc_s.so.1 libm.so.6 libpthread.so.0 librt.so.1
 ANGSTROM_LIBS_SRC = $(addprefix build/$($(ROOTFS).dir)/lib/, ${ANGSTROM_LIBS})
 ANGSTROM_LIBS_DEST = $(addprefix buildout/angstrom/lib/, ${ANGSTROM_LIBS})
 
