@@ -1,19 +1,18 @@
 .PHONY: app install app-clean
 
 app:
-	cd android; \
 	ant debug
 
 install:
 	@echo "Please wait... the command may appear to hang."
-	adb install -r android/bin/Chemlogic-debug.apk
+	adb wait-for-device
+	adb install -r bin/Chemlogic-debug.apk
 
 app-clean:
-	cd android; \
 	ant clean
 
 
-run-emu:
+app-emulator:
 	@echo "Please wait... the command may appear to hang."
 	emulator @chemlogic-dev &
 

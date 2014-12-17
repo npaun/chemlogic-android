@@ -1,3 +1,18 @@
-include android/App.mk
+ANDROID = $(MAKE) -C android
+CHROOT = $(MAKE) -C chroot
 
-clean: app-clean
+.PHONY: app chroot all clean 
+
+default: app install
+
+
+app app-clean app-emulator install:
+	$(ANDROID) $@
+
+chroot chroot-clean: 
+	$(CHROOT) $@
+
+all: app chroot	
+
+
+clean: app-clean chroot-clean 

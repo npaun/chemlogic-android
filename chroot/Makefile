@@ -13,7 +13,7 @@ TOOLCHAIN = toolchain.host-$(HOST).build-$(BUILD)
 
 
 ############ MASTER TARGETS ###########
-all: compile-swipl bootstrap
+chroot: compile-swipl bootstrap
 
 .SUFFIXES: 
 
