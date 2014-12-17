@@ -166,7 +166,7 @@ clean-bootstrap:
 
 
 ###### CLEAN BUILD WORK ###########
-clean:
+chroot-clean:
 	- rm -r build/*
 	- rm -r buildout/angstrom/*
 
