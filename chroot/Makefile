@@ -154,7 +154,10 @@ buildout/angstrom/chemlogic/chemcli:
 	adb pull -p /data/local/chemlogic-bootstrap/angstrom/chemlogic/chemcli $@
 	chmod a+x $@
 
-bootstrap: run-bootstrap buildout/angstrom/pl/swipl.prc buildout/angstrom/chemlogic/chemcli halt-emulator clean-bootstrap
+version-tag:
+	touch buildout/angstrom/VERSION-`../build/versionName`
+
+bootstrap: run-bootstrap buildout/angstrom/pl/swipl.prc buildout/angstrom/chemlogic/chemcli version-tag halt-emulator clean-bootstrap
 
 halt-emulator:
 	-adb emu kill
