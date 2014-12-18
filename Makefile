@@ -9,7 +9,7 @@ default: app install
 app app-clean app-emulator install:
 	$(ANDROID) $@
 
-chroot chroot-clean: 
+chroot chroot-clean chroot-install: 
 	$(CHROOT) $@
 
 all: app chroot	

@@ -170,3 +170,7 @@ chroot-clean:
 	- rm -r build/*
 	- rm -r buildout/angstrom/*
 
+####### INSTALL CHROOT FILES INTO THE ANDROID APP STRUCTURE #####
+
+chroot-install:
+	cp -a buildout/ ../android/assets/files/
