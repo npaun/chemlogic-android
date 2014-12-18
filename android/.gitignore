@@ -2,6 +2,9 @@
 bin/
 gen/
 
+# Produced by the building process
+assets/files/
+
 # Output files
 *.class
 *.dex
