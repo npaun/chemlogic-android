@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -68,11 +69,34 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 	
-	public void install () {   
-      
+	public boolean checkVersion()
+	{
+	String versionName = "unknown";
+		
+		try
+		{
+		versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+	} catch (PackageManager.NameNotFoundException e) {}
+
+		Log.w("chemlogic","Version is " + versionName);
+		return(new File("/data/data/ca.nicholaspaun.chemlogic.app1/files/angstrom/VERSION-" + versionName).exists());
+	}
+	
+	public void install ()  {
+
+		if (!checkVersion())
+		{
+			try{
+		Runtime.getRuntime().exec("rm -r /data/data/ca.nicholaspaun.chemlogic.app1/files/*");
+			}
+			catch(Exception e)
+			{
+			 e.printStackTrace();
+			}
 
             copyAssetFolder(getAssets(), "files", 
                     "/data/data/ca.nicholaspaun.chemlogic.app1/files");
+		}
  
     }
 
