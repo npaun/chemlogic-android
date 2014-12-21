@@ -4,6 +4,7 @@ gen/
 
 # Produced by the building process
 assets/files/
+AndroidManifest.xml
 
 # Output files
 *.class

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+VERSION_CODE=`git tag -l v* | wc -l`
+VERSION_NAME=`git describe --always --match v* --dirty='*' | sed s/^v//g | sed  s/-.*-g/+git-/g`
+sed -e "s/\\\$VERSION_CODE/$VERSION_CODE/" -e "s/\\\$VERSION_NAME/$VERSION_NAME/" AndroidManifest.in.xml > AndroidManifest.xml

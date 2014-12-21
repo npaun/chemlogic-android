@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules">
+    <xmlproperty file="AndroidManifest.xml" prefix="mymanifest" collapseAttributes="true"/>
+    <target name="-pre-build">
+        <exec executable="../build/setup-manifest" failonerror="true"/>
+    </target>
+</project>
