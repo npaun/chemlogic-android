@@ -155,6 +155,7 @@ buildout/angstrom/chemlogic/chemcli:
 	chmod a+x $@
 
 version-tag:
+	-rm buildout/angstrom/VERSION-*
 	touch buildout/angstrom/VERSION-`../build/versionName`
 
 bootstrap: run-bootstrap buildout/angstrom/pl/swipl.prc buildout/angstrom/chemlogic/chemcli version-tag halt-emulator clean-bootstrap
@@ -176,4 +177,4 @@ chroot-clean:
 ####### INSTALL CHROOT FILES INTO THE ANDROID APP STRUCTURE #####
 
 chroot-install:
-	cp -a buildout/ ../android/assets/files/
+	cp -a buildout/angstrom ../android/assets/files/
