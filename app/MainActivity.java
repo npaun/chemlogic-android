@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
 	} catch (PackageManager.NameNotFoundException e) {}
 
 		Log.w("chemlogic","Version is " + versionName);
-		return(new File("/data/data/ca.nicholaspaun.chemlogic.app1/files/angstrom/VERSION-" + versionName).exists());
+		return(new File("/data/data/ca.nicholaspaun.chemlogic.app1/files/system/VERSION-" + versionName).exists());
 	}
 	
 	public void install ()  {
@@ -180,7 +180,7 @@ public class MainActivity extends ActionBarActivity {
     {
     	Log.w("chemlogic","Retarded Retard Retard!");
     	
-    	String line = "/data/data/ca.nicholaspaun.chemlogic.app1/files/angstrom/etc/init";
+    	String line = "/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init";
     	CommandLine cmdLine = CommandLine.parse(line);
     	DefaultExecutor executor = new DefaultExecutor();
     	try {
@@ -200,7 +200,7 @@ public class MainActivity extends ActionBarActivity {
     	try
     	{
     		
-        Process proc = new ProcessBuilder("/system/bin/sh","/data/data/ca.nicholaspaun.chemlogic.app1/files/angstrom/etc/init").start();
+        Process proc = new ProcessBuilder("/system/bin/sh","/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init").start();
     	BufferedReader read = new BufferedReader(new InputStreamReader(proc.getInputStream()));
     	
       	String line;
