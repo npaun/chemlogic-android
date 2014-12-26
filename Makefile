@@ -1,7 +1,7 @@
 ANDROID = $(MAKE) -C android
-CHROOT = $(MAKE) -C chroot
+SYSTEM = $(MAKE) -C system
 
-.PHONY: app chroot all clean 
+.PHONY: app system all clean 
 
 default: app install
 
@@ -9,10 +9,10 @@ default: app install
 app app-clean app-emulator install:
 	$(ANDROID) $@
 
-chroot chroot-clean chroot-install: 
-	$(CHROOT) $@
+system system-clean system-install: 
+	$(SYSTEM) $@
 
-all: app chroot	
+all: app system	
 
 
-clean: app-clean chroot-clean 
+clean: app-clean system-clean 

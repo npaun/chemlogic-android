@@ -13,7 +13,7 @@ TOOLCHAIN = toolchain.host-$(HOST).build-$(BUILD)
 
 
 ############ MASTER TARGETS ###########
-chroot: compile-swipl bootstrap
+system: compile-swipl bootstrap
 
 .SUFFIXES: 
 
@@ -170,12 +170,12 @@ clean-bootstrap:
 
 
 ###### CLEAN BUILD WORK ###########
-chroot-clean:
+system-clean:
 	- rm -r build/*
 	- rm -r buildout/angstrom/*
 
 ####### INSTALL CHROOT FILES INTO THE ANDROID APP STRUCTURE #####
 
-chroot-install:
+system-install:
 	- rm -r ../android/assets/files/*	
 	cp -a buildout/angstrom ../android/assets/files/
