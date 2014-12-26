@@ -82,51 +82,51 @@ build/$(swipl.dir)/src/mkvmi: build/$(swipl.dir)/src/mkvmi.c
 
 ANGSTROM_LIBS = ld-linux.so.3 libc.so.6 libdl.so.2 libgcc_s.so.1 libm.so.6 libpthread.so.0 librt.so.1
 ANGSTROM_LIBS_SRC = $(addprefix build/$($(ROOTFS).dir)/lib/, ${ANGSTROM_LIBS})
-ANGSTROM_LIBS_DEST = $(addprefix buildout/angstrom/lib/, ${ANGSTROM_LIBS})
+ANGSTROM_LIBS_DEST = $(addprefix buildout/system/lib/, ${ANGSTROM_LIBS})
 
-androidfs-bootstrap: mkdir copy-angstrom-libs buildout/angstrom/pl/libgmp.so.10 buildout/angstrom/pl/swipl buildout/angstrom/pl/libswipl.so.6.6.6 copy-boot-files buildout/angstrom/bin/busybox.nosuid buildout/angstrom/etc/init.bootstrap buildout/angstrom/etc/init buildout/angstrom/etc/rc.bootstrap buildout/angstrom/etc/rc buildout/angstrom/etc/make.bootstrap
+androidfs-bootstrap: mkdir copy-angstrom-libs buildout/system/pl/libgmp.so.10 buildout/system/pl/swipl buildout/system/pl/libswipl.so.6.6.6 copy-boot-files buildout/system/bin/busybox.nosuid buildout/system/etc/init.bootstrap buildout/system/etc/init buildout/system/etc/rc.bootstrap buildout/system/etc/rc buildout/system/etc/make.bootstrap
 
 
-buildout/angstrom/pl/libgmp.so.10: build/$($(TOOLCHAIN).dir)/usr/local/angstrom/$(HOST)/$(HOST)-angstrom-linux-gnueabi/usr/lib/libgmp.so.10
+buildout/system/pl/libgmp.so.10: build/$($(TOOLCHAIN).dir)/usr/local/angstrom/$(HOST)/$(HOST)-angstrom-linux-gnueabi/usr/lib/libgmp.so.10
 	cp $< $@
-buildout/angstrom/pl/swipl: build/$(swipl.dir)/src/swipl
+buildout/system/pl/swipl: build/$(swipl.dir)/src/swipl
 	cp $< $@
-buildout/angstrom/pl/libswipl.so.6.6.6: build/$(swipl.dir)/lib/$(HOST)-linux/libswipl.so.6.6.6
+buildout/system/pl/libswipl.so.6.6.6: build/$(swipl.dir)/lib/$(HOST)-linux/libswipl.so.6.6.6
 	cp $< $@
-buildout/angstrom/etc/init.bootstrap: scripts/init.bootstrap
+buildout/system/etc/init.bootstrap: scripts/init.bootstrap
 	cp -a $< $@
-buildout/angstrom/etc/init: scripts/init
+buildout/system/etc/init: scripts/init
 	cp -a $< $@
-buildout/angstrom/etc/rc.bootstrap: scripts/rc.bootstrap
+buildout/system/etc/rc.bootstrap: scripts/rc.bootstrap
 	cp -a $< $@
-buildout/angstrom/etc/rc: scripts/rc
+buildout/system/etc/rc: scripts/rc
 	cp -a $< $@
-buildout/angstrom/etc/make.bootstrap: scripts/make.bootstrap
+buildout/system/etc/make.bootstrap: scripts/make.bootstrap
 	cp $< $@
 copy-angstrom-libs: 
-	cp ${ANGSTROM_LIBS_SRC} buildout/angstrom/lib/
+	cp ${ANGSTROM_LIBS_SRC} buildout/system/lib/
 	
 
 
 
-copy-boot-files: buildout/angstrom/plboot/swipl buildout/angstrom/plboot/library buildout/angstrom/plboot/library/clpqr buildout/angstrom/plboot/chemlogic
-buildout/angstrom/plboot/swipl: build/$(swipl.dir)/boot/
+copy-boot-files: buildout/system/plboot/swipl buildout/system/plboot/library buildout/system/plboot/library/clpqr buildout/system/plboot/chemlogic
+buildout/system/plboot/swipl: build/$(swipl.dir)/boot/
 	cp -r $< $@
-buildout/angstrom/plboot/library: build/$(swipl.dir)/library/
+buildout/system/plboot/library: build/$(swipl.dir)/library/
 	cp -r $< $@
-buildout/angstrom/plboot/library/clpqr: build/$(swipl.dir)/packages/clpqr/
+buildout/system/plboot/library/clpqr: build/$(swipl.dir)/packages/clpqr/
 	cp -r $< $@
-buildout/angstrom/plboot/chemlogic: build/$(chemlogic.dir)/
+buildout/system/plboot/chemlogic: build/$(chemlogic.dir)/
 	cp -r $< $@
 
-buildout/angstrom/bin/busybox.nosuid:  build/$($(ROOTFS).dir)/bin/busybox.nosuid
+buildout/system/bin/busybox.nosuid:  build/$($(ROOTFS).dir)/bin/busybox.nosuid
 	cp $< $@
-	cd buildout/angstrom/bin; \
+	cd buildout/system/bin; \
 	ln -s busybox.nosuid sh
 
 
 DIRS = bin lib pl etc chemlogic plboot 
-DIRS_PATH = $(addprefix buildout/angstrom/, ${DIRS})
+DIRS_PATH = $(addprefix buildout/system/, ${DIRS})
 mkdir: ${DIRS_PATH} 
 ${DIRS_PATH}:
 	- mkdir -p ${DIRS_PATH}
@@ -145,37 +145,37 @@ pushfs: androidfs-bootstrap emulator
 
 
 run-bootstrap: pushfs
-	adb shell /data/local/chemlogic-bootstrap/angstrom/etc/init.bootstrap
+	adb shell /data/local/chemlogic-bootstrap/system/etc/init.bootstrap
 
-buildout/angstrom/pl/swipl.prc:
-	adb pull -p /data/local/chemlogic-bootstrap/angstrom/pl/swipl.prc $@
+buildout/system/pl/swipl.prc:
+	adb pull -p /data/local/chemlogic-bootstrap/system/pl/swipl.prc $@
 
-buildout/angstrom/chemlogic/chemcli:
-	adb pull -p /data/local/chemlogic-bootstrap/angstrom/chemlogic/chemcli $@
+buildout/system/chemlogic/chemcli:
+	adb pull -p /data/local/chemlogic-bootstrap/system/chemlogic/chemcli $@
 	chmod a+x $@
 
 version-tag:
-	-rm buildout/angstrom/VERSION-*
-	touch buildout/angstrom/VERSION-`../build/versionName`
+	-rm buildout/system/VERSION-*
+	touch buildout/system/VERSION-`../build/versionName`
 
-bootstrap: run-bootstrap buildout/angstrom/pl/swipl.prc buildout/angstrom/chemlogic/chemcli version-tag halt-emulator clean-bootstrap
+bootstrap: run-bootstrap buildout/system/pl/swipl.prc buildout/system/chemlogic/chemcli version-tag halt-emulator clean-bootstrap
 
 halt-emulator:
 	-adb emu kill
 
 clean-bootstrap:
-	rm -r buildout/angstrom/plboot
-	rm    buildout/angstrom/etc/*.bootstrap
+	rm -r buildout/system/plboot
+	rm    buildout/system/etc/*.bootstrap
 
 
 
 ###### CLEAN BUILD WORK ###########
 system-clean:
 	- rm -r build/*
-	- rm -r buildout/angstrom/*
+	- rm -r buildout/system/*
 
 ####### INSTALL CHROOT FILES INTO THE ANDROID APP STRUCTURE #####
 
 system-install:
 	- rm -r ../android/assets/files/*	
-	cp -a buildout/angstrom ../android/assets/files/
+	cp -a buildout/system ../android/assets/files/
