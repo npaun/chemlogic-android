@@ -8,10 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
-import org.apache.commons.exec.ExecuteException;
-
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -176,24 +172,7 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    private void chemwipe()
-    {
-    	Log.w("chemlogic","Retarded Retard Retard!");
-    	
-    	String line = "/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init";
-    	CommandLine cmdLine = CommandLine.parse(line);
-    	DefaultExecutor executor = new DefaultExecutor();
-    	try {
-			int exitValue = executor.execute(cmdLine);
-			Log.w("chemlogic","Retard Retard Retard!" + exitValue);
-			} catch (ExecuteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
+
     
     private void chempipe() 
     {
