@@ -1,10 +1,16 @@
 package ca.nicholaspaun.chemlogic.app1;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
 
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -23,13 +29,16 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		install();
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		chempipe();
 		
+
 
 	}
 
@@ -167,4 +176,45 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-}
+    private void chemwipe()
+    {
+    	Log.w("chemlogic","Retarded Retard Retard!");
+    	
+    	String line = "/data/data/ca.nicholaspaun.chemlogic.app1/files/angstrom/etc/init";
+    	CommandLine cmdLine = CommandLine.parse(line);
+    	DefaultExecutor executor = new DefaultExecutor();
+    	try {
+			int exitValue = executor.execute(cmdLine);
+			Log.w("chemlogic","Retard Retard Retard!" + exitValue);
+			} catch (ExecuteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    private void chempipe() 
+    {
+    	try
+    	{
+    		
+        Process proc = new ProcessBuilder("/system/bin/sh","/data/data/ca.nicholaspaun.chemlogic.app1/files/angstrom/etc/init").start();
+    	BufferedReader read = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+    	
+      	String line;
+    	while ((line = read.readLine()) != null && !line.startsWith("CL ?-")) {
+           Log.w("chemlogic","Process output: " + line);
+        }
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+
+  
+
+    	}
+    }
+
