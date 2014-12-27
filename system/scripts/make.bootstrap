@@ -11,6 +11,6 @@ boot_chemlogic :-
 	consult('/data/local/chemlogic-bootstrap/system/plboot/chemlogic/cli/chemcli.in'),
 	cl_parse_all,
 
-	qsave_program('/data/local/chemlogic-bootstrap/system/chemlogic/chemcli'),
+	qsave_program('/data/local/chemlogic-bootstrap/system/chemlogic/chemcli',[stand_alone(true),foreign(save)]),
 
 	halt.
