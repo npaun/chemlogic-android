@@ -20,19 +20,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MainActivity extends ActionBarActivity {
+import  ca.nicholaspaun.chemlogic.app1.ChemlogicController;
 
+public class MainActivity extends ActionBarActivity {
+	private ChemlogicController ctrl;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		install();
+		ctrl = new ChemlogicController();
+		installer_upgrade();
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		chempipe();
+		ctrl.demo();
 		
 
 
@@ -74,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 	
-	public boolean checkVersion()
+	public boolean installer_checkVersion()
 	{
 	String versionName = "unknown";
 		
@@ -87,23 +92,26 @@ public class MainActivity extends ActionBarActivity {
 		return(new File("/data/data/ca.nicholaspaun.chemlogic.app1/files/system/VERSION-" + versionName).exists());
 	}
 	
-	public void install ()  {
+	public void installer_upgrade ()  {
 
-		if (!checkVersion())
-		{
-			try{
-		Runtime.getRuntime().exec("rm -r /data/data/ca.nicholaspaun.chemlogic.app1/files/*");
-			}
-			catch(Exception e)
-			{
-			 e.printStackTrace();
-			}
-
-            copyAssetFolder(getAssets(), "files", 
-                    "/data/data/ca.nicholaspaun.chemlogic.app1/files");
-		}
+		if (!installer_checkVersion())
+			installer_install();
  
     }
+	
+	public void installer_install() {
+		try{
+			Runtime.getRuntime().exec("rm -r /data/data/ca.nicholaspaun.chemlogic.app1/files/*");
+				}
+				catch(Exception e)
+				{
+				 e.printStackTrace();
+				}
+
+	            copyAssetFolder(getAssets(), "files", 
+	                    "/data/data/ca.nicholaspaun.chemlogic.app1/files");
+	}
+	
 
     private static boolean copyAssetFolder(AssetManager assetManager,
             String fromAssetPath, String toPath) {
@@ -174,26 +182,6 @@ public class MainActivity extends ActionBarActivity {
 
 
     
-    private void chempipe() 
-    {
-    	try
-    	{
-    		
-        Process proc = new ProcessBuilder("/system/bin/sh","/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init").start();
-    	BufferedReader read = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-    	
-      	String line;
-    	while ((line = read.readLine()) != null && !line.startsWith("CL ?-")) {
-           Log.w("chemlogic","Process output: " + line);
-        }
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    	}
 
-  
-
-    	}
     }
 
