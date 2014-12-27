@@ -53,6 +53,7 @@ public class ChemlogicController {
     	}
 
   
+    	Log.w("chemlogic","Yo, doood!");
 
     	}
 }
