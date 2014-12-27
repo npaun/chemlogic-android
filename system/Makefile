@@ -137,6 +137,7 @@ pushfs: androidfs-bootstrap emulator
 run-bootstrap: pushfs
 	adb shell /data/local/chemlogic-bootstrap/system/etc/init.bootstrap
 
+.PHONY: buildout/system/bin/chemcli
 buildout/system/bin/chemcli:
 	adb pull -p /data/local/chemlogic-bootstrap/system/bin/chemcli $@
 	chmod a+x $@
@@ -160,6 +161,9 @@ clean-bootstrap:
 system-clean:
 	- rm -r build/*
 	- rm -r buildout/system/*
+
+quick-clean:
+	- rm -r buildout/system/bin/*
 
 ####### INSTALL CHROOT FILES INTO THE ANDROID APP STRUCTURE #####
 
