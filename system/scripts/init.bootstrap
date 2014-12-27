@@ -5,8 +5,9 @@ export PATH=${BASE}/bin:/sbin:/system/sbin:/system/bin:/system/xbin:${BASE}/lib
 export LD_LIBRARY_PATH=/system/lib:${BASE}/lib:/lib:/usr/lib
 
 
-cd $BASE/bin
-${BASE}/lib/ld-linux.so.3 $BASE/bin/swipl -O -o swipl.prc -b ../build/swipl-boot/init.pl
+cd $BASE/build/swipl/bin
+${BASE}/lib/ld-linux.so.3 $BASE/build/swipl/bin/swipl -O -o swipl.prc -b ../boot/init.pl
 
-cd $BASE/build/swipl-library
-echo boot_chemlogic. | ${BASE}/lib/ld-linux.so.3 $BASE/bin/swipl -l $BASE/etc/make.bootstrap
+cd $BASE/build/swipl/library
+mkdir $BASE/bin
+echo boot_chemlogic. | ${BASE}/lib/ld-linux.so.3 $BASE/build/swipl/bin/swipl -l $BASE/etc/make.bootstrap

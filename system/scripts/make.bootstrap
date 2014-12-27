@@ -1,9 +1,9 @@
 boot_chemlogic :-
-	assertz(library_directory('/data/local/chemlogic-bootstrap/system/build/swipl-library')),
-	assertz(library_directory('/data/local/chemlogic-bootstrap/system/build/swipl-library/clpqr')),
+	assertz(library_directory('/data/local/chemlogic-bootstrap/system/build/swipl/library')),
+	assertz(library_directory('/data/local/chemlogic-bootstrap/system/build/swipl/library/clpqr')),
 
-	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/build/swipl-library'))),
-	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/build/swipl-library/clpqr'))),
+	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/build/swipl/library'))),
+	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/build/swipl/library/clpqr'))),
 
 	make_library_index('.'),
 	reload_library_index,

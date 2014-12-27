@@ -84,12 +84,10 @@ ANGSTROM_LIBS = ld-linux.so.3 libc.so.6 libdl.so.2 libgcc_s.so.1 libm.so.6 libpt
 ANGSTROM_LIBS_SRC = $(addprefix build/$($(ROOTFS).dir)/lib/, ${ANGSTROM_LIBS})
 ANGSTROM_LIBS_DEST = $(addprefix buildout/system/lib/, ${ANGSTROM_LIBS})
 
-androidfs-bootstrap: mkdir copy-angstrom-libs buildout/system/lib/libgmp.so.10 buildout/system/bin/swipl buildout/system/lib/libswipl.so.6.6.6 copy-boot-files buildout/system/etc/init.bootstrap buildout/system/etc/init buildout/system/etc/make.bootstrap
+androidfs-bootstrap: mkdir copy-angstrom-libs buildout/system/lib/libgmp.so.10 buildout/system/lib/libswipl.so.6.6.6 copy-boot-files buildout/system/etc/init.bootstrap buildout/system/etc/init buildout/system/etc/make.bootstrap
 
 
 buildout/system/lib/libgmp.so.10: build/$($(TOOLCHAIN).dir)/usr/local/angstrom/$(HOST)/$(HOST)-angstrom-linux-gnueabi/usr/lib/libgmp.so.10
-	cp $< $@
-buildout/system/bin/swipl: build/$(swipl.dir)/src/swipl
 	cp $< $@
 buildout/system/lib/libswipl.so.6.6.6: build/$(swipl.dir)/lib/$(HOST)-linux/libswipl.so.6.6.6
 	cp $< $@
@@ -105,17 +103,19 @@ copy-angstrom-libs:
 
 
 
-copy-boot-files: buildout/system/build/swipl-boot buildout/system/build/swipl-library buildout/system/build/swipl-library/clpqr buildout/system/build/chemlogic
-buildout/system/build/swipl-boot: build/$(swipl.dir)/boot/
+copy-boot-files: buildout/system/build/swipl/bin/swipl buildout/system/build/swipl/boot buildout/system/build/swipl/library buildout/system/build/swipl/library/clpqr buildout/system/build/chemlogic
+buildout/system/build/swipl/bin/swipl: build/$(swipl.dir)/src/swipl
+	cp $< $@
+buildout/system/build/swipl/boot: build/$(swipl.dir)/boot/
 	cp -r $< $@
-buildout/system/build/swipl-library: build/$(swipl.dir)/library/
+buildout/system/build/swipl/library: build/$(swipl.dir)/library/
 	cp -r $< $@
-buildout/system/build/swipl-library/clpqr: build/$(swipl.dir)/packages/clpqr/
+buildout/system/build/swipl/library/clpqr: build/$(swipl.dir)/packages/clpqr/
 	cp -r $< $@
 buildout/system/build/chemlogic: build/$(chemlogic.dir)/
 	cp -r $< $@
 
-DIRS = bin lib etc build
+DIRS = bin lib etc build build/swipl build/swipl/bin
 DIRS_PATH = $(addprefix buildout/system/, ${DIRS})
 mkdir: ${DIRS_PATH} 
 ${DIRS_PATH}:
@@ -138,7 +138,7 @@ run-bootstrap: pushfs
 	adb shell /data/local/chemlogic-bootstrap/system/etc/init.bootstrap
 
 buildout/system/bin/chemcli:
-	adb pull -p /data/local/chemlogic-bootstrap/system/chemlogic/chemcli $@
+	adb pull -p /data/local/chemlogic-bootstrap/system/bin/chemcli $@
 	chmod a+x $@
 
 version-tag:
