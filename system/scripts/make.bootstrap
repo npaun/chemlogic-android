@@ -1,16 +1,16 @@
 boot_chemlogic :-
-	assertz(library_directory('/data/local/chemlogic-bootstrap/system/plboot/library')),
-	assertz(library_directory('/data/local/chemlogic-bootstrap/system/plboot/library/clpqr')),
+	assertz(library_directory('/data/local/chemlogic-bootstrap/system/build/swipl-library')),
+	assertz(library_directory('/data/local/chemlogic-bootstrap/system/build/swipl-library/clpqr')),
 
-	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/plboot/library'))),
-	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/plboot/library/clpqr'))),
+	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/build/swipl-library'))),
+	assertz(autoload_path(library('/data/local/chemlogic-bootstrap/system/build/swipl-library/clpqr'))),
 
 	make_library_index('.'),
 	reload_library_index,
 
-	consult('/data/local/chemlogic-bootstrap/system/plboot/chemlogic/cli/chemcli.in'),
+	consult('/data/local/chemlogic-bootstrap/system/build/chemlogic/cli/chemcli.in'),
 	cl_parse_all,
 
-	qsave_program('/data/local/chemlogic-bootstrap/system/chemlogic/chemcli',[stand_alone(true),foreign(save)]),
+	qsave_program('/data/local/chemlogic-bootstrap/system/bin/chemcli',[stand_alone(true)]),
 
 	halt.

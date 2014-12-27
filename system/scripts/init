@@ -1,9 +1,8 @@
 #!/system/bin/sh
 
 export BASE=/data/data/ca.nicholaspaun.chemlogic.app1/files/system
-export PATH=${BASE}/bin:/sbin:/system/sbin:/system/bin:/system/xbin:${BASE}/lib:${BASE}/pl
-export LD_LIBRARY_PATH=/system/lib:${BASE}/lib:/lib:/usr/lib:${BASE}/pl
+export PATH=${BASE}/bin:/sbin:/system/sbin:/system/bin:/system/xbin:${BASE}/lib
+export LD_LIBRARY_PATH=/system/lib:${BASE}/lib:/lib:/usr/lib
 
-#echo $0
-${BASE}/lib/ld-linux.so.3 $BASE/pl/swipl -l $BASE/etc/dummy.pl
+${BASE}/lib/ld-linux.so.3 $BASE/bin/swipl -l $BASE/etc/dummy.pl
 

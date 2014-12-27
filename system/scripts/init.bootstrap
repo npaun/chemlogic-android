@@ -1,13 +1,12 @@
 #!/system/bin/sh
 
 export BASE=/data/local/chemlogic-bootstrap/system
-export PATH=${BASE}/bin:/sbin:/system/sbin:/system/bin:/system/xbin:${BASE}/lib:${BASE}/pl
-export LD_LIBRARY_PATH=/system/lib:${BASE}/lib:/lib:/usr/lib:${BASE}/pl
+export PATH=${BASE}/bin:/sbin:/system/sbin:/system/bin:/system/xbin:${BASE}/lib
+export LD_LIBRARY_PATH=/system/lib:${BASE}/lib:/lib:/usr/lib
 
 
-cd $BASE/pl
-${BASE}/lib/ld-linux.so.3 $BASE/pl/swipl -O -o swipl.prc -b ../plboot/swipl/init.pl
+cd $BASE/bin
+${BASE}/lib/ld-linux.so.3 $BASE/bin/swipl -O -o swipl.prc -b ../build/swipl-boot/init.pl
 
-mkdir $BASE/chemlogic
-cd $BASE/plboot/library
-echo boot_chemlogic. | ${BASE}/lib/ld-linux.so.3 $BASE/pl/swipl -l $BASE/etc/make.bootstrap
+cd $BASE/build/swipl-library
+echo boot_chemlogic. | ${BASE}/lib/ld-linux.so.3 $BASE/bin/swipl -l $BASE/etc/make.bootstrap
