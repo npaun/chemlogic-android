@@ -5,6 +5,7 @@ package ca.nicholaspaun.chemlogic.app1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
@@ -37,6 +38,16 @@ public class ChemlogicController {
 		}
 	}
 	
+	public void write(String line)
+	{
+		try {
+			write.write(line + ".\n");
+			write.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
     public void demo() 
     {
     	Log.w("chemlogic","Saddam Hussein's iPad!!!");
