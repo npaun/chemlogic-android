@@ -101,7 +101,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void installer_install() {
 		try{
-			Runtime.getRuntime().exec("rm -r /data/data/ca.nicholaspaun.chemlogic.app1/files/*");
+			Runtime.getRuntime().exec("rm -r /data/data/ca.nicholaspaun.chemlogic.app1/files/");
 				}
 				catch(Exception e)
 				{
