@@ -84,7 +84,7 @@ ANGSTROM_LIBS = ld-linux.so.3 libc.so.6 libdl.so.2 libgcc_s.so.1 libm.so.6 libpt
 ANGSTROM_LIBS_SRC = $(addprefix build/$($(ROOTFS).dir)/lib/, ${ANGSTROM_LIBS})
 ANGSTROM_LIBS_DEST = $(addprefix buildout/system/lib/, ${ANGSTROM_LIBS})
 
-androidfs-bootstrap: mkdir copy-angstrom-libs buildout/system/pl/libgmp.so.10 buildout/system/pl/swipl buildout/system/pl/libswipl.so.6.6.6 copy-boot-files buildout/system/bin/busybox.nosuid buildout/system/etc/init.bootstrap buildout/system/etc/init buildout/system/etc/rc.bootstrap buildout/system/etc/rc buildout/system/etc/make.bootstrap
+androidfs-bootstrap: mkdir copy-angstrom-libs buildout/system/pl/libgmp.so.10 buildout/system/pl/swipl buildout/system/pl/libswipl.so.6.6.6 copy-boot-files buildout/system/bin/busybox.nosuid buildout/system/etc/init.bootstrap buildout/system/etc/init buildout/system/etc/rc.bootstrap buildout/system/etc/make.bootstrap
 
 
 buildout/system/pl/libgmp.so.10: build/$($(TOOLCHAIN).dir)/usr/local/angstrom/$(HOST)/$(HOST)-angstrom-linux-gnueabi/usr/lib/libgmp.so.10
@@ -98,8 +98,6 @@ buildout/system/etc/init.bootstrap: scripts/init.bootstrap
 buildout/system/etc/init: scripts/init
 	cp -a $< $@
 buildout/system/etc/rc.bootstrap: scripts/rc.bootstrap
-	cp -a $< $@
-buildout/system/etc/rc: scripts/rc
 	cp -a $< $@
 buildout/system/etc/make.bootstrap: scripts/make.bootstrap
 	cp $< $@
