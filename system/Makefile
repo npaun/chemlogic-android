@@ -151,7 +151,7 @@ halt-emulator:
 	-adb emu kill
 
 clean-bootstrap:
-	rm -r buildout/system/build/*
+	rm -r buildout/system/build
 	rm    buildout/system/etc/*.bootstrap
 
 
