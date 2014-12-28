@@ -111,7 +111,6 @@ public class MainActivity extends ActionBarActivity {
 		}
 		}
  
-    }
 	
 	public void installer_install() {
 		try{
