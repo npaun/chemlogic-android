@@ -40,7 +40,8 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="center"
-             android:text="@string/balancer_button_submit" />
+             android:text="@string/balancer_button_submit"
+             android:onClick="balancer_do" />
 
         <TextView
             android:id="@+id/balancer_textview_output"

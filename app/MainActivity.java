@@ -1,11 +1,9 @@
 package ca.nicholaspaun.chemlogic.app1;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 import android.content.pm.PackageManager;
@@ -13,14 +11,15 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import  ca.nicholaspaun.chemlogic.app1.ChemlogicController;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 	private ChemlogicController ctrl;
@@ -187,6 +186,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    public void balancer_do(View view)
+    {
+    	EditText editText = (EditText) findViewById(R.id.balancer_edittext_input);
+        String input = editText.getText().toString();
+        String output = ctrl.command("word", input,"symbolic");
+        
+        TextView textView = (TextView) findViewById(R.id.balancer_textview_output);
+        textView.setText(Html.fromHtml(output));
+    }
     
 
     }
