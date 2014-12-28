@@ -147,8 +147,8 @@ public class MainActivity extends ActionBarActivity {
 
                             toPath + "/" + file);
                     
-                    Log.w("chemlogic",toPath);
-                    Log.w("chemlogic",file);
+                    Log.d("chemlogic",toPath);
+                    Log.d("chemlogic",file);
                                       
                     	Runtime.getRuntime().exec("chmod 700 " + toPath + "/" + file);
                 }
