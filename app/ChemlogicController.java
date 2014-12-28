@@ -18,6 +18,7 @@ import android.util.Log;
 public class ChemlogicController {
 	private BufferedReader read;
 	private BufferedWriter write;
+	public String chemlogic_ident;
 	
 	public ChemlogicController()
 	{
@@ -40,6 +41,7 @@ public class ChemlogicController {
 	
 	public void write(String line)
 	{
+		Log.w("chemlogic","Command: " + line);
 		try {
 			write.write(line + ".\n");
 			write.flush();
@@ -48,23 +50,54 @@ public class ChemlogicController {
 			e.printStackTrace();
 		}
 	}
-    public void demo() 
-    {
-    	Log.w("chemlogic","Saddam Hussein's iPad!!!");
-    	try
+	
+	public String read()
+	{
+		try
     	{
       	String line;
+      	String message = "";
     	while ((line = read.readLine()) != null && !line.startsWith("CL ?-")) {
-           Log.w("chemlogic","Process output: " + line);
+          message += line;
         }
+    	return(message);
     	}
     	catch(Exception e)
     	{
     		e.printStackTrace();
+    		return("[ChemlogicController.read] INTERNAL ERROR");
     	}
 
-  
-    	Log.w("chemlogic","Yo, doood!");
-
-    	}
+		
+	}
+	
+	public String command(String InputType, String Input,String OutputType)
+	{
+		write(InputType + " - '" + Input + "' :: " + OutputType + " print");
+		return(read());
+	}
+	
+	public String command(String InputType, String Input)
+	{
+		write(InputType + " - '" + Input + "' :: print");
+		return(read());
+	}
+	
+	
+	public void acknowledge()
+	{
+      chemlogic_ident = read();
+      Log.i("chemlogic",chemlogic_ident);
+	}		
+	
+	public void halt()
+	{
+		write("halt");
+	}
+	
+	public void reset()
+	{
+		halt();
+		init();
+	}
 }

@@ -37,9 +37,12 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		ctrl.write("formula - 'CHerror' :: -Err");
-		ctrl.demo();
-		ctrl.demo();
+		ctrl.acknowledge();
+	
+		
+		
+		String result = ctrl.command("formula","C4H10O");
+		Log.w("chemlogic","It works!!!: " + result);
 
 
 	}
