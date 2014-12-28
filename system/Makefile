@@ -13,7 +13,7 @@ TOOLCHAIN = toolchain.host-$(HOST).build-$(BUILD)
 
 
 ############ MASTER TARGETS ###########
-system: compile-swipl bootstrap
+system: compile-swipl splice-chemlogic bootstrap
 
 .SUFFIXES: 
 
@@ -74,6 +74,12 @@ build/$(swipl.dir)/src/defatom: build/$(swipl.dir)/src/defatom.c
 build/$(swipl.dir)/src/mkvmi: build/$(swipl.dir)/src/mkvmi.c
 	cd build/$(swipl.dir)/src; \
 	$(CC) -g -O2 -o mkvmi ./mkvmi.c
+
+###### SPLICES FOR CHEMLOGIC ITSELF #####
+
+splice-chemlogic .PHONY: build/$(chemlogic.dir)/build/compile.cf
+build/$(chemlogic.dir)/build/compile.cf: build/$(chemlogic.dir)/build/compile.cf.dist
+	cp $< $@
 
 
 ##### MAKE ANDROID FILESYSTEM TREE #####
