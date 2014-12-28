@@ -10,4 +10,4 @@ ${BASE}/lib/ld-linux.so.3 $BASE/build/swipl/bin/swipl -O -o swipl.prc -b ../boot
 
 cd $BASE/build/swipl/library
 mkdir $BASE/bin
-echo boot_chemlogic. | ${BASE}/lib/ld-linux.so.3 $BASE/build/swipl/bin/swipl -l $BASE/etc/make.bootstrap -- --api
+echo boot_chemlogic. | ${BASE}/lib/ld-linux.so.3 $BASE/build/swipl/bin/swipl -l $BASE/etc/make.bootstrap -- --api html_android_textview
