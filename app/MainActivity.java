@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		installer_upgrade();
 		ctrl = new ChemlogicController();
+		
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
@@ -93,14 +94,22 @@ public class MainActivity extends ActionBarActivity {
 		versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
 	} catch (PackageManager.NameNotFoundException e) {}
 
-		Log.w("chemlogic","Version is " + versionName);
+		Log.i("chemlogic","App version: " + versionName);
 		return(new File("/data/data/ca.nicholaspaun.chemlogic.app1/files/system/VERSION-" + versionName).exists());
 	}
 	
 	public void installer_upgrade ()  {
 
 		if (!installer_checkVersion())
+		{
+			Log.i("chemlogic","Upgrade required.");
 			installer_install();
+		}
+		else
+		{
+			Log.i("chemlogic","Up to date.");
+		}
+		}
  
     }
 	
