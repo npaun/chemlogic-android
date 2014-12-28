@@ -18,7 +18,7 @@ import android.util.Log;
 public class ChemlogicController {
 	private BufferedReader read;
 	private BufferedWriter write;
-	public String chemlogic_ident;
+	private String chemlogic_ident;
 	
 	public ChemlogicController()
 	{
@@ -89,6 +89,11 @@ public class ChemlogicController {
       chemlogic_ident = read();
       Log.i("chemlogic",chemlogic_ident);
 	}		
+	
+	public String identify()
+	{
+		return(chemlogic_ident);
+	}
 	
 	public void halt()
 	{
