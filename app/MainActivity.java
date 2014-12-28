@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 	
 		
 		
-		String result = ctrl.command("formula","C4H10O");
+		String result = ctrl.command("symbolic","C4H10O + O2 --> CO2 + H2O");
 		Log.w("chemlogic","It works!!!: " + result);
 
 
