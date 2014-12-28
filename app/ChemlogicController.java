@@ -41,7 +41,7 @@ public class ChemlogicController {
 	
 	public void write(String line)
 	{
-		Log.w("chemlogic","Command: " + line);
+		Log.d("chemlogic","Command: " + line);
 		try {
 			write.write(line + ".\n");
 			write.flush();
