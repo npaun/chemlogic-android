@@ -17,8 +17,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
@@ -65,6 +69,8 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public static class PlaceholderFragment extends Fragment {
 
+		private ChemlogicController ctrl;
+		
 		public PlaceholderFragment() {
 		}
 
@@ -73,8 +79,56 @@ public class MainActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
+			
+			
+			buttonSetup(rootView);
+			populateSpinner(rootView,R.id.balancer_spinner_type_input,R.array.balancer_type_array);
+			populateSpinner(rootView,R.id.balancer_spinner_type_output,R.array.balancer_type_array);
+			ctrl = ((MainActivity) getActivity()).getController();
 			return rootView;
 		}
+		
+		
+		public void populateSpinner(View v, int Spinner, int Choices)
+		{
+			Spinner spinner = (Spinner) v.findViewById(Spinner);
+			// Create an ArrayAdapter using the string array and a default spinner layout
+			ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+			        Choices, android.R.layout.simple_spinner_item);
+			// Specify the layout to use when the list of choices appears
+			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			// Apply the adapter to the spinner
+			spinner.setAdapter(adapter);
+		}
+		
+		
+		public void buttonSetup(View v)
+		{
+			  final Button button = (Button) v.findViewById(R.id.balancer_button_submit);
+		         button.setOnClickListener(new View.OnClickListener() {
+
+	    public void onClick(View v)
+	    {
+
+
+	    	Spinner inputTypeSpinner =  (Spinner) getActivity().findViewById(R.id.balancer_spinner_type_input);
+	    	String  inputType = inputTypeSpinner.getSelectedItem().toString().toLowerCase();
+	    	
+	    	Spinner outputTypeSpinner =  (Spinner) getActivity().findViewById(R.id.balancer_spinner_type_output);
+	    	String  outputType = outputTypeSpinner.getSelectedItem().toString().toLowerCase();
+	    	
+	    	EditText editText = (EditText) getActivity().findViewById(R.id.balancer_edittext_input);
+	        String input = editText.getText().toString();
+	        
+	        String output = ctrl.command(inputType, input,outputType);
+	        
+	        TextView textView = (TextView) getActivity().findViewById(R.id.balancer_textview_output);
+	        textView.setText(Html.fromHtml(output));
+	    }
+			});
+		}
+		
+		
 	}
 	
 	public boolean installer_checkVersion()
@@ -185,17 +239,12 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
-    public void balancer_do(View view)
+    public ChemlogicController getController()
     {
-    	EditText editText = (EditText) findViewById(R.id.balancer_edittext_input);
-        String input = editText.getText().toString();
-        String output = ctrl.command("word", input,"symbolic");
-        
-        TextView textView = (TextView) findViewById(R.id.balancer_textview_output);
-        textView.setText(Html.fromHtml(output));
+    	return(ctrl);
     }
     
+
 
     }
 
