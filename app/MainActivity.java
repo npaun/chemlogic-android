@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -17,8 +18,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -122,8 +123,15 @@ public class MainActivity extends ActionBarActivity {
 	        
 	        String output = ctrl.command(inputType, input,outputType);
 	        
+	        editText.clearFocus();
 	        TextView textView = (TextView) getActivity().findViewById(R.id.balancer_textview_output);
 	        textView.setText(Html.fromHtml(output));
+	        
+	        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+	        	      Context.INPUT_METHOD_SERVICE);
+	        	imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+
+
 	    }
 			});
 		}
