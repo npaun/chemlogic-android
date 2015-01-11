@@ -252,7 +252,19 @@ public class MainActivity extends ActionBarActivity {
     	return(ctrl);
     }
     
+    
+    public void chemkbd_plus(View v)
+    {
+     EditText editText = (EditText) findViewById(R.id.balancer_edittext_input);
+     editText.append(" + ");
+    }
 
-
+    
+    public void chemkbd_arrow(View v)
+    {
+     EditText editText = (EditText) findViewById(R.id.balancer_edittext_input);
+     editText.append(" --> ");
+    }
+    
     }
 
