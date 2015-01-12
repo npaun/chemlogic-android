@@ -9,6 +9,9 @@
     <string name="balancer_button_submit">Balance!</string>
     <string name="balancer_textview_output">Lorem ipsum dolor sit amet nullis consecutor.</string>
     
+    <string name="hint_balancer_spinner_type_input">Input Type:</string>
+       <string name="hint_balancer_spinner_type_output">Output Type:</string>
+       
      <string-array name="balancer_type_array">
         <item>Symbolic</item>
         <item>Word</item>

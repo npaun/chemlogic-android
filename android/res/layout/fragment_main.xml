@@ -11,19 +11,46 @@
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-              <Spinner
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                 >
+              
+                <TextView android:hint="@string/hint_balancer_spinner_type_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+                <Spinner
                   android:id="@+id/balancer_spinner_type_input"
-                  android:layout_width="50dp"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content" />
-
-               <EditText
+            </LinearLayout>
+            
+<LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                 >
+              
+                <TextView android:hint="@string/hint_balancer_spinner_type_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+           
+                         <Spinner
+                  android:id="@+id/balancer_spinner_type_output"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                   />
+               </LinearLayout>
+    
+        </RelativeLayout>
+        
+            <EditText
                    android:id="@+id/balancer_edittext_input"
-                   android:layout_weight="1"
-                   android:layout_width="0dp"
+                   android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:inputType="textNoSuggestions"
                    android:ems="10" 
@@ -33,13 +60,6 @@
         <requestFocus />	
     </EditText>
     
-                         <Spinner
-                  android:id="@+id/balancer_spinner_type_output"
-                  android:layout_width="50dp"
-                  android:layout_height="wrap_content" />
-               
-    
-        </LinearLayout>
         
          <Button
              android:id="@+id/balancer_button_submit"
