@@ -60,37 +60,56 @@
             android:hint="@string/balancer_textview_output" />
         </ScrollView>
 
- 
-       
-
+     
 </LinearLayout>
-        	<LinearLayout
-android:id="@+id/m_table_menu"
-android:layout_height="wrap_content"
-android:layout_width="match_parent"
-android:layout_alignParentBottom="true"
+
+        <TableLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
 android:padding="0dp"
-android:background="#003200"
-android:orientation="horizontal">
-        
+android:background="#222222"
+android:orientation="horizontal"
+android:layout_gravity="center"
+ >
+
+             <TableRow
+                 android:id="@+id/tableRow1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center_horizontal" >
         <Button
             android:id="@+id/chemkbd_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="chemkbd_plus"
             android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:text="+" />
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+             android:textColor="#ffffff"
+               android:textStyle="bold" 
 
-<Button 
+
+           android:text="+" />
+                <Button 
     android:id="@+id/chemkbd_arrow"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:onClick="chemkbd_arrow"
                 android:layout_gravity="center"
-                android:background="@android:color/transparent"
-    android:text="-->" />
-	
+                             android:textColor="#ffffff"
+                                         android:minWidth="0dp"
+            android:minHeight="0dp"
+                                       
+                           android:textStyle="bold" 
+            
+    android:text="→" />
+ 
 
-</LinearLayout> 
+                 
+             </TableRow>
+ 
+         </TableLayout>
+    
+
 </RelativeLayout>		
