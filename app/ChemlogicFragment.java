@@ -1,18 +1,14 @@
 package ca.nicholaspaun.chemlogic.app1;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.TableLayout;
 
 
 
@@ -54,5 +50,24 @@ public class ChemlogicFragment extends Fragment {
 		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
       	      Context.INPUT_METHOD_SERVICE);
       	imm.hideSoftInputFromWindow(control.getWindowToken(), 0);
+	}
+	
+	public void setup_keyboard(View v)
+	{
+		  final EditText editText = (EditText) v.findViewById(R.id.chemlogic_input);
+	         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+					public void onFocusChange(View v, boolean hasFocus) {
+						keyboard_focus(v,hasFocus);	
+					}
+	         }); 	
+	}
+	
+	public void keyboard_focus(View v, boolean hasFocus)
+	{
+		TableLayout kbdExt = (TableLayout) v.getRootView().findViewById(R.id.keyboard_extension);
+		if (hasFocus)
+			kbdExt.setVisibility(View.VISIBLE);
+		else
+			kbdExt.setVisibility(View.GONE);
 	}
 }

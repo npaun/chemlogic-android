@@ -32,9 +32,12 @@ public class BalancerFragment extends ChemlogicFragment {
 				false);
 		
 		
-		buttonSetup(rootView);
-		populateSpinner(rootView,R.id.balancer_spinner_type_input,R.array.balancer_type_array);
-		populateSpinner(rootView,R.id.balancer_spinner_type_output,R.array.balancer_type_array);
+		setup_keyboard(rootView);
+		keyboard_focus(rootView,true);
+		
+		setup_submit(rootView);
+		setup_spinner(rootView,R.id.balancer_type_input,R.array.balancer_type_array);
+		setup_spinner(rootView,R.id.balancer_type_output,R.array.balancer_type_array);
 		ctrl = ((MainActivity) getActivity()).getController();
 		return rootView;
 	}
