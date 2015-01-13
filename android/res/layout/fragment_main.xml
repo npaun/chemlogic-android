@@ -1,135 +1,86 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:focusable="true"
-  android:focusableInTouchMode="true" 
-    >
-
+    android:focusableInTouchMode="true">
+    
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout 
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                 >
+                android:orientation="vertical">
               
-                <TextView android:hint="@string/hint_balancer_spinner_type_input"
+                <TextView 
+                    android:hint="@string/hint_balancer_spinner_type_input"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></TextView>
+                    android:layout_height="wrap_content" />
+                
                 <Spinner
                   android:id="@+id/balancer_spinner_type_input"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content" />
             </LinearLayout>
             
-<LinearLayout android:layout_width="wrap_content"
+            <LinearLayout 
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentRight="true"
-                 >
+                android:layout_alignParentRight="true">
               
-                <TextView android:hint="@string/hint_balancer_spinner_type_output"
+                <TextView 
+                    android:hint="@string/hint_balancer_spinner_type_output"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></TextView>
-           
-                         <Spinner
-                  android:id="@+id/balancer_spinner_type_output"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                   />
-               </LinearLayout>
-    
+                    android:layout_height="wrap_content"/>
+                
+                <Spinner
+                    android:id="@+id/balancer_spinner_type_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </RelativeLayout>
         
-            <EditText
-                   android:id="@+id/balancer_edittext_input"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:inputType="textNoSuggestions"
-                   android:ems="10" 
-                   android:hint="@string/balancer_edittext_input"
-                   >
-
-        <requestFocus />	
-    </EditText>
-    
-        
-         <Button
-             android:id="@+id/balancer_button_submit"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:text="@string/balancer_button_submit"
-             android:onClick="balancer_do" />
-
-         <ScrollView
-             android:id="@+id/balancer_scrollview"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/balancer_textview_output"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/balancer_edittext_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/balancer_textview_output" />
-        </ScrollView>
-
-     
-</LinearLayout>
-
-        <TableLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_alignParentBottom="true"
-android:padding="0dp"
-android:background="#272727"
-android:orientation="horizontal"
-android:layout_gravity="center"
- >
-
-             <TableRow
-                 android:id="@+id/tableRow1"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:gravity="center_horizontal" >
-        <Button
-            android:id="@+id/chemkbd_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="chemkbd_plus"
-            android:layout_gravity="center"
-            android:minWidth="40dp"
-            android:minHeight="45dp"
-             android:textColor="#ffffff"
-               android:textStyle="bold" 
-
-
-           android:text="+" />
-                <Button 
-    android:id="@+id/chemkbd_arrow"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="chemkbd_arrow"
-                android:layout_gravity="center"
-                             android:textColor="#ffffff"
-                                         android:minWidth="40dp"
-            android:minHeight="45dp"
-                                       
-                           android:textStyle="bold" 
+            android:inputType="textNoSuggestions"
+            android:ems="10" 
+            android:hint="@string/balancer_edittext_input">
             
-    android:text="→" />
- 
-
-                 
-             </TableRow>
- 
-         </TableLayout>
+            <requestFocus />
+        </EditText>
+        
+        <Button
+            android:id="@+id/balancer_button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/balancer_button_submit"
+            android:onClick="balancer_do" />
+        
+        <ScrollView
+            android:id="@+id/balancer_scrollview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            
+            <TextView
+                android:id="@+id/balancer_textview_output"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/balancer_textview_output" />
+        
+        </ScrollView>
+    </LinearLayout>
     
-
+    <include layout="@layout/keyboard_ext" />
 </RelativeLayout>		
