@@ -180,16 +180,16 @@ public class MainActivity extends ActionBarActivity {
     }
     
     
-    public void chemkbd_plus(View v)
+    public void kbd_plus(View v)
     {
-     EditText editText = (EditText) findViewById(R.id.balancer_edittext_input);
+     EditText editText = (EditText) findViewById(R.id.chemlogic_input);
      editText.append(" + ");
     }
 
     
-    public void chemkbd_arrow(View v)
+    public void kbd_arrow(View v)
     {
-     EditText editText = (EditText) findViewById(R.id.balancer_edittext_input);
+     EditText editText = (EditText) findViewById(R.id.chemlogic_input);
      editText.append(" --> ");
     }
     

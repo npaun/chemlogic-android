@@ -9,9 +9,10 @@
 	android:background="#272727"
 	android:orientation="horizontal"
 	android:layout_gravity="center"
+	android:id="@+id/keyboard_extension"
+	android:visibility="gone"
  >
  	<TableRow
-	    android:id="@+id/tableRow1"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:gravity="center_horizontal" >
@@ -20,7 +21,7 @@
 	     	android:id="@+id/chemkbd_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="chemkbd_plus"
+            android:onClick="kbd_plus"
             android:layout_gravity="center"
             android:minWidth="40dp"
             android:minHeight="45dp"
@@ -32,7 +33,7 @@
 	        android:id="@+id/chemkbd_arrow"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:onClick="chemkbd_arrow"
+	        android:onClick="kbd_arrow"
 	        android:layout_gravity="center"
 	        android:textColor="#ffffff"
 	        android:minWidth="40dp"

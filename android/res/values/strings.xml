@@ -5,12 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="balancer_edittext_input">Enter a chemical equation to balance.</string>
-    <string name="balancer_button_submit">Balance!</string>
-    <string name="balancer_textview_output">Lorem ipsum dolor sit amet nullis consecutor.</string>
-    
-    <string name="hint_balancer_spinner_type_input">Input Type:</string>
-       <string name="hint_balancer_spinner_type_output">Output Type:</string>
+    <string name="balancer_hint_input">Enter a chemical equation to balance.</string>
+    <string name="balancer_hint_submit">Balance!</string>
+    <string name="balancer_hint_output">Your balanced chemical equation will appear here.</string>
+    <string name="hint_type_input">Input Type:</string>
+    <string name="hint_type_output">Output Type:</string>
        
      <string-array name="balancer_type_array">
         <item>Symbolic</item>

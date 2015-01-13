@@ -21,12 +21,12 @@
                 android:orientation="vertical">
               
                 <TextView 
-                    android:hint="@string/hint_balancer_spinner_type_input"
+                    android:hint="@string/hint_type_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 
                 <Spinner
-                  android:id="@+id/balancer_spinner_type_input"
+                  android:id="@+id/balancer_type_input"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content" />
             </LinearLayout>
@@ -38,46 +38,45 @@
                 android:layout_alignParentRight="true">
               
                 <TextView 
-                    android:hint="@string/hint_balancer_spinner_type_output"
+                    android:hint="@string/hint_type_output"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 
                 <Spinner
-                    android:id="@+id/balancer_spinner_type_output"
+                    android:id="@+id/balancer_type_output"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </RelativeLayout>
         
         <EditText
-            android:id="@+id/balancer_edittext_input"
+            android:id="@+id/chemlogic_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textNoSuggestions"
             android:ems="10" 
-            android:hint="@string/balancer_edittext_input">
+            android:hint="@string/balancer_hint_input">
             
             <requestFocus />
         </EditText>
         
         <Button
-            android:id="@+id/balancer_button_submit"
+            android:id="@+id/chemlogic_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/balancer_button_submit"
-            android:onClick="balancer_do" />
+            android:text="@string/balancer_hint_submit"
+            />
         
         <ScrollView
-            android:id="@+id/balancer_scrollview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             
             <TextView
-                android:id="@+id/balancer_textview_output"
+                android:id="@+id/chemlogic_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/balancer_textview_output" />
+                android:hint="@string/balancer_hint_output" />
         
         </ScrollView>
     </LinearLayout>
