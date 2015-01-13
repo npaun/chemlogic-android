@@ -45,18 +45,18 @@ public class BalancerFragment extends ChemlogicFragment {
 	
 	public void submit(View v)
 	{
-    	Spinner inputTypeSpinner =  (Spinner) getActivity().findViewById(R.id.balancer_spinner_type_input);
+    	Spinner inputTypeSpinner =  (Spinner) getActivity().findViewById(R.id.balancer_type_input);
     	String  inputType = inputTypeSpinner.getSelectedItem().toString().toLowerCase();
     	
-    	Spinner outputTypeSpinner =  (Spinner) getActivity().findViewById(R.id.balancer_spinner_type_output);
+    	Spinner outputTypeSpinner =  (Spinner) getActivity().findViewById(R.id.balancer_type_output);
     	String  outputType = outputTypeSpinner.getSelectedItem().toString().toLowerCase();
     	
-    	EditText inputEdit = (EditText) getActivity().findViewById(R.id.balancer_edittext_input);
+    	EditText inputEdit = (EditText) getActivity().findViewById(R.id.chemlogic_input);
         String input = inputEdit.getText().toString();
         
         String output = ctrl.command(inputType, input,outputType);
 
-        TextView outputView = (TextView) getActivity().findViewById(R.id.balancer_textview_output);
+        TextView outputView = (TextView) getActivity().findViewById(R.id.chemlogic_output);
         outputView.setText(Html.fromHtml(output));
         
         defocus(inputEdit);

@@ -17,7 +17,7 @@ public class ChemlogicFragment extends Fragment {
 	public ChemlogicFragment() {
 	}
 
-	public void populateSpinner(View v, int Spinner, int Choices)
+	public void setup_spinner(View v, int Spinner, int Choices)
 	{
 		Spinner spinner = (Spinner) v.findViewById(Spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
@@ -29,9 +29,9 @@ public class ChemlogicFragment extends Fragment {
 		spinner.setAdapter(adapter);
 	}
 	
-	public void buttonSetup(View v)
+	public void setup_submit(View v)
 	{
-		  final Button button = (Button) v.findViewById(R.id.balancer_button_submit);
+		  final Button button = (Button) v.findViewById(R.id.chemlogic_submit);
 	         button.setOnClickListener(new View.OnClickListener() {
 	        	    public void onClick(View v)
 	        	    {
