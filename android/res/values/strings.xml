@@ -3,7 +3,7 @@
 
     <string name="app_name">Chemlogic</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_spinner">SIC TRANSIT GLORIA MUNDI</string>
 
     <string name="balancer_hint_input">Enter a chemical equation to balance.</string>
     <string name="balancer_hint_submit">Balance!</string>
@@ -16,4 +16,9 @@
         <item>Word</item>
     </string-array>
         
+     <string-array name="menu_features_array">
+         <item>Balancer</item>
+         <item>Compounder</item>
+         <item>About</item>
+     </string-array>
 </resources>

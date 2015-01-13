@@ -6,25 +6,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Html;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 	private ChemlogicController ctrl;
@@ -50,8 +43,24 @@ public class MainActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+      setup_menu_spinner(menu);
+		    
+
 		return true;
 	}
+	
+	public void setup_menu_spinner(Menu menu)
+	{
+		 MenuItem SpinnerItem = menu.findItem(R.id.action_spinner);
+		    Spinner spinner = (Spinner) MenuItemCompat.getActionView(SpinnerItem);
+		    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+			        R.array.menu_features_array, R.layout.custom_spinner_item);
+			// Specify the layout to use when the list of choices appears
+			adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+			// Apply the adapter to the spinner
+			spinner.setAdapter(adapter);
+	}
+
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_spinner) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
