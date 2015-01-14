@@ -31,4 +31,21 @@
          <item>Compounder</item>
          <item>About</item>
      </string-array>
+     
+     <string name="about_hint_dev_toggle">Developer information...</string>
+     <string name="about_hint_reset_prolog">Reset\nProlog</string>
+     <string name="about_hint_stop_prolog">Stop\nProlog</string>
+     <string name="about_hint_reinstall_app">Re-install\nApp</string>
+     <string name="about_copyright">
+         <![CDATA[
+         <p>Chemlogic: A Logic Programming Computer Chemistry System</p>
+         <p>&copy; 2012&ndash;2015 Nicholas Paun</p>
+         <br />
+         <p>
+         <b>View the Chemlogic website: </b><a href="http://icebergsystems.ca/chemlogic">icebergsys.ca/chemlogic</a><br />
+         <b>Contact me: </b><a href="mailto:np+chemlogic@icebergsystems.ca">&lt;np@icebergsystems.ca&gt;</a><br />
+         <b>Find out more about my other projects: </b><a href="http://icebergsystems.ca/">icebergsys.ca</a>
+         </p>
+         ]]>
+         </string>
 </resources>
