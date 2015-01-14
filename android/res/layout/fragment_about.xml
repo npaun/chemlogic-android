@@ -1,0 +1,72 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/about_copyright"
+    android:ems="10" />
+     
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:id="@+id/about_dev_toggle"
+    android:textColor="#000099"
+    android:textStyle="italic"
+    android:text="@string/about_hint_dev_toggle"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true" />
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/about_dev_panel"
+    android:visibility="gone">
+    
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/about_identity"
+    android:typeface="monospace" />
+    
+<TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_reset_prolog"
+            android:hint="@string/about_hint_reset_prolog" />
+        
+                <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_stop_prolog"
+            android:hint="@string/about_hint_stop_prolog" />
+        
+                <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_reinstall_app"
+            android:hint="@string/about_hint_reinstall_app" />
+        
+        
+    </TableRow>
+</TableLayout>
+    
+</LinearLayout>
+</LinearLayout>		
