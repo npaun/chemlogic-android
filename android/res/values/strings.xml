@@ -8,6 +8,11 @@
     <string name="balancer_hint_input">Enter a chemical equation to balance.</string>
     <string name="balancer_hint_submit">Balance!</string>
     <string name="balancer_hint_output">Your balanced chemical equation will appear here.</string>
+    
+    <string name="compounder_hint_input">Enter a chemical name or formula to convert.</string>
+    <string name="compounder_hint_submit">Compound!</string>
+    <string name="compounder_hint_output">Your chemical name or formula will appear here.</string>
+    
     <string name="hint_type_input">Input Type:</string>
     <string name="hint_type_output">Output Type:</string>
        
@@ -15,6 +20,11 @@
         <item>Symbolic</item>
         <item>Word</item>
     </string-array>
+    
+     <string-array name="compounder_type_array">
+         <item>Formula</item>
+         <item>Name</item>
+     </string-array>
         
      <string-array name="menu_features_array">
          <item>Balancer</item>
