@@ -58,7 +58,7 @@ public class ChemlogicController {
       	String line;
       	String message = "";
     	while ((line = read.readLine()) != null && !line.startsWith("CL ?-")) {
-          message += line;
+          message += line + "\n";
         }
     	return(message);
     	}
