@@ -9,12 +9,15 @@ import java.io.OutputStream;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -49,6 +52,25 @@ public class MainActivity extends ActionBarActivity {
 		return true;
 	}
 	
+	public void selectFragment(int id)
+	{
+		Log.i("chemlogic","Hello, yes?");
+		Spinner fragmentSpinner =  (Spinner) findViewById(id);
+    	String  fragment = "ca.nicholaspaun.chemlogic.app1." + fragmentSpinner.getSelectedItem().toString() + "Fragment";
+    	
+    	
+    	try {
+			getSupportFragmentManager().beginTransaction()
+			.replace(R.id.container, (Fragment) Class.forName(fragment).newInstance()).commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.e("chemlogic","Something really bad happened while switching fragments.");
+		}
+    	
+    	
+	}
+	
 	public void setup_menu_spinner(Menu menu)
 	{
 		 MenuItem SpinnerItem = menu.findItem(R.id.action_spinner);
@@ -59,6 +81,19 @@ public class MainActivity extends ActionBarActivity {
 			adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 			// Apply the adapter to the spinner
 			spinner.setAdapter(adapter);
+			
+			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			    @Override
+			    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+			        selectFragment(R.id.action_spinner);
+			    }
+
+			    @Override
+			    public void onNothingSelected(AdapterView<?> parentView) {
+			        // your code here
+			    }
+
+			});
 	}
 
 
@@ -68,7 +103,9 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
+		Log.i("chemlogic","Somting is happaning.");
 		if (id == R.id.action_spinner) {
+			selectFragment(id);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
