@@ -52,6 +52,11 @@ public class ChemlogicFragment extends Fragment {
       	imm.hideSoftInputFromWindow(control.getWindowToken(), 0);
 	}
 	
+	public String fixNewline(String text)
+	{
+		return(text.replace("\n", "<br />"));
+	}
+	
 	public void setup_keyboard(View v)
 	{
 		  final EditText editText = (EditText) v.findViewById(R.id.chemlogic_input);
