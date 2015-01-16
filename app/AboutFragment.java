@@ -1,5 +1,6 @@
 package ca.nicholaspaun.chemlogic.app1;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Html;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -38,10 +40,16 @@ public class AboutFragment extends ChemlogicFragment {
 		setup_stop(rootView);
 		setup_reinstall(rootView);
 		
+		// Be gone keyboard!
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+	      	      Context.INPUT_METHOD_SERVICE);
+	      	imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
+	      	
+	      
 		return rootView;
 	}
 	
-	public String version_get()
+	public String version_get() 
 	{
      String versionName = "unknown";
 		
