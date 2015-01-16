@@ -39,7 +39,7 @@ public class ChemlogicController {
 		}
 	}
 	
-	public void write(String line)
+	private void write(String line)
 	{
 		Log.d("chemlogic","Command: " + line);
 		try {
@@ -51,7 +51,7 @@ public class ChemlogicController {
 		}
 	}
 	
-	public String read()
+	private String read()
 	{
 		try
     	{
@@ -71,15 +71,20 @@ public class ChemlogicController {
 		
 	}
 	
+	private String escape(String str)
+	{
+		return(str.replace("\\","\\\\").replace("'","\\'"));
+	}
+	
 	public String command(String InputType, String Input,String OutputType)
 	{
-		write(InputType + " - '" + Input + "' :: " + OutputType + " print");
+		write(InputType + " - '" + escape(Input) + "' :: " + OutputType + " print");
 		return(read());
 	}
 	
 	public String command(String InputType, String Input)
 	{
-		write(InputType + " - '" + Input + "' :: print");
+		write(InputType + " - '" + escape(Input) + "' :: print");
 		return(read());
 	}
 	
