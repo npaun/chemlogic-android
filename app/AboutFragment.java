@@ -102,6 +102,8 @@ public class AboutFragment extends ChemlogicFragment {
 	        	    public void onClick(View v)
 	        	    {
 	        	    	ctrl.reset();
+	        	    	ctrl.acknowledge();
+	        	    	populate_identity(v.getRootView());
 	        	    }
 	         });
 	}
