@@ -24,6 +24,7 @@ import android.widget.Spinner;
 
 public class MainActivity extends ActionBarActivity {
 	private ChemlogicController ctrl;
+	protected boolean inhibit_spinner = true;
 	
 	
 	@Override
@@ -37,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new AboutFragment()).commit();
+					.add(R.id.container, new BalancerFragment()).commit();
 		}
 		ctrl.acknowledge();
 	}
@@ -85,7 +86,11 @@ public class MainActivity extends ActionBarActivity {
 			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			    @Override
 			    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-			        selectFragment(R.id.action_spinner);
+			    	
+			    	if (inhibit_spinner)
+			    		inhibit_spinner = false;
+			    	else
+			    		selectFragment(R.id.action_spinner);
 			    }
 
 			    @Override
@@ -105,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
 		int id = item.getItemId();
 		Log.i("chemlogic","Somting is happaning.");
 		if (id == R.id.action_spinner) {
-			selectFragment(id);
+			//selectFragment(id);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
