@@ -231,17 +231,21 @@ public class MainActivity extends ActionBarActivity {
     }
     
     
+    public void kbd_insert(View v, String symbol)
+    {
+        EditText editText = (EditText) findViewById(R.id.chemlogic_input);
+        editText.getText().insert(editText.getSelectionStart(),symbol);
+    }
+    
     public void kbd_plus(View v)
     {
-     EditText editText = (EditText) findViewById(R.id.chemlogic_input);
-     editText.append(" + ");
+      kbd_insert(v," + ");
     }
 
     
     public void kbd_arrow(View v)
     {
-     EditText editText = (EditText) findViewById(R.id.chemlogic_input);
-     editText.append(" --> ");
+     kbd_insert(v," --> ");
     }
     
     }
