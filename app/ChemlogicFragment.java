@@ -74,7 +74,11 @@ public class ChemlogicFragment extends Fragment {
 	{
 		TableLayout kbdExt = (TableLayout) v.getRootView().findViewById(R.id.keyboard_extension);
 		if (hasFocus)
+		{
+			InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		    imm.toggleSoftInput(kbdExt.getId(), InputMethodManager.SHOW_FORCED);
 			kbdExt.setVisibility(View.VISIBLE);
+		}
 		else
 			kbdExt.setVisibility(View.GONE);
 	}
