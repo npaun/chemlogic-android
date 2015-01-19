@@ -2,6 +2,9 @@ package ca.nicholaspaun.chemlogic.app1;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Html.TagHandler;
+import android.text.Spanned;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -56,7 +59,7 @@ public class ChemlogicFragment extends Fragment {
 	{
 		return(text.replace("\n", "<br />"));
 	}
-	
+		
 	public void setup_keyboard(View v)
 	{
 		  final EditText editText = (EditText) v.findViewById(R.id.chemlogic_input);
@@ -74,5 +77,49 @@ public class ChemlogicFragment extends Fragment {
 			kbdExt.setVisibility(View.VISIBLE);
 		else
 			kbdExt.setVisibility(View.GONE);
+	}
+	
+	public static class ChemlogicHtml
+	{
+		private static String firstLineStyle(String input)
+		{
+			/*
+			 * The first line of Chemlogic's output is the actual result, or the highlighted error string.
+			 * We want to format this specially in the app. We do not do this in Chemlogic itself, because this is just a presentation tweak,
+			 * The style used is: centered and enlarged.
+			 */
+			String result = input
+					.replaceFirst("(?m)^(.*)$", "<font size='10'><center><bgcolor-ff0000>$1</bgcolor-ff0000></center></font>");
+							
+			return(result);
+		}
+		
+		private static String fixNewline(String input)
+		{
+			/*
+			 * In HTML, newlines do not have any effect. This replaces them with actual linebreaks
+			 */
+			return(input.replace("\n", "<br />"));
+		}
+		
+		private static String spanToPseudoElement(String input)
+		{
+			/*
+			 * Background color support is hacked into Html tag handler using <bgcolor-hhhhhh> "pseudo-elements".
+			 * This is done because it is difficult to access real attributes from TagHandlers.
+			 * Here, we allow a special case of the standard span tag and CSS inline styles to work by converting to this hacky syntax.
+			 */
+			return(input.replaceAll("<span style=\"background-color: #([a-fA-F0-9]{6}).*?>(.*?)</span>", "<bgcolor-$1>$2</bgcolor-$1>"));
+		}
+		
+		    public static Spanned fromHtml(String text)
+		    {
+		    	text = firstLineStyle(text);
+		    	text = spanToPseudoElement(text);
+			    text = fixNewline(text);
+		    	TagHandler handler = new HtmlTagHandler();
+		    	return(Html.fromHtml(text,null,handler));
+		    	
+		    }
 	}
 }
