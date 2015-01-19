@@ -93,7 +93,7 @@ public class ChemlogicFragment extends Fragment {
 			 * The style used is: centered and enlarged.
 			 */
 			String result = input
-					.replaceFirst("(?m)^(.*)$", "<font size='10'><center><bgcolor-ff0000>$1</bgcolor-ff0000></center></font>");
+					.replaceFirst("(?m)^(.*)$", "<font size='10'><center>$1</center></font>");
 							
 			return(result);
 		}
@@ -113,7 +113,7 @@ public class ChemlogicFragment extends Fragment {
 			 * This is done because it is difficult to access real attributes from TagHandlers.
 			 * Here, we allow a special case of the standard span tag and CSS inline styles to work by converting to this hacky syntax.
 			 */
-			return(input.replaceAll("<span style=\"background-color: #([a-fA-F0-9]{6}).*?>(.*?)</span>", "<bgcolor-$1>$2</bgcolor-$1>"));
+			return(input.replaceAll("<span style=\"background-color: #([a-fA-F0-9]{6});\">(.*?)</span>", "<bgcolor-$1>$2</bgcolor-$1>"));
 		}
 		
 		    public static Spanned fromHtml(String text)
