@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.widget.Spinner;
 
 public class MainActivity extends ActionBarActivity {
 	private ChemlogicController ctrl;
+	private String chemlogic_dir;
 	protected boolean inhibit_spinner = true;
 	
 	
@@ -31,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		
+	      chemlogic_dir = getApplicationContext().getFilesDir().getPath();
 		installer_upgrade();
 		ctrl = new ChemlogicController();
 		
@@ -127,10 +129,11 @@ public class MainActivity extends ActionBarActivity {
 	} catch (PackageManager.NameNotFoundException e) {}
 
 		Log.i("chemlogic","App version: " + versionName);
-		return(new File("/data/data/ca.nicholaspaun.chemlogic.app1/files/system/VERSION-" + versionName).exists());
+		return(new File(chemlogic_dir + "/system/VERSION-" + versionName).exists());
 	}
 	
 	public void installer_upgrade ()  {
+
 
 		if (!installer_checkVersion())
 		{
@@ -146,15 +149,14 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void installer_install() {
 		try{
-			Runtime.getRuntime().exec("rm -r /data/data/ca.nicholaspaun.chemlogic.app1/files/");
+			Runtime.getRuntime().exec("rm -r " + chemlogic_dir +"/");
 				}
 				catch(Exception e)
 				{
 				 e.printStackTrace();
 				}
 
-	            copyAssetFolder(getAssets(), "files", 
-	                    "/data/data/ca.nicholaspaun.chemlogic.app1/files");
+	            copyAssetFolder(getAssets(), "files", chemlogic_dir);
 	}
 	
 
