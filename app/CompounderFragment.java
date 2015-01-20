@@ -54,7 +54,7 @@ public class CompounderFragment extends ChemlogicFragment {
         String output = ctrl.command(inputType, input);
 
         TextView outputView = (TextView) getActivity().findViewById(R.id.chemlogic_output);
-        outputView.setText(Html.fromHtml(fixNewline(output)));
+        outputView.setText(ChemlogicHtml.fromHtml(output));
         
         defocus(inputEdit);
  }
