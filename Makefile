@@ -6,7 +6,7 @@ SYSTEM = $(MAKE) -C system
 default: app install
 
 
-app app-clean app-emulator install:
+app app-clean app-emulator install release release-install:
 	$(ANDROID) $@
 
 system system-clean system-install: 
