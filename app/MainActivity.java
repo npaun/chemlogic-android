@@ -250,5 +250,15 @@ public class MainActivity extends ActionBarActivity {
      kbd_insert(v," --> ");
     }
     
+    public void kbd_lparen(View v)
+    {
+    	kbd_insert(v,"(");
+    }
+   
+    public void kbd_rparen(View v)
+    {
+    	kbd_insert(v,")");
+    }
+    
     }
 
