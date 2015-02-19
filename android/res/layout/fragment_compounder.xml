@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/balancer_hint_submit"
+            android:text="@string/compounder_hint_submit"
             />
         
         <ScrollView
