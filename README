@@ -33,7 +33,7 @@ To build the entire app:
 The Chemlogic Android app is very complex and has a number of dependencies. 
 
 * Building the app itself requires the Android SDK from Google.
-* Building the system package requires a Chemlogic distribution and its dependencies.
+* Building the system package requires a Chemlogic distribution and its dependencies.  
 	These files can be conveniently obtained from the chemlogic-android-distfiles Git repository (https://github.com/nicholaspaun/chemlogic-android-distfiles/), which should be cloned to the parent directory of this distribution. 
 
 
