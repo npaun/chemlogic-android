@@ -31,13 +31,10 @@ To build the entire app:
 ## 2. Dependencies ##
 
 The Chemlogic Android app is very complex and has a number of dependencies. 
-Building the app itself requires the Android SDK from Google.
 
-Building the system package requires:  
-	* A Chemlogic source distribution.
-	* SWI-Prolog and its dependencies (a linker, some POSIX libraries, GMP)
-
-These files can be conveniently obtained from the chemlogic-android-distfiles Git repository (https://github.com/nicholaspaun/chemlogic-android-distfiles/), which should be cloned to the parent directory of this distribution. 
+* Building the app itself requires the Android SDK from Google.
+* Building the system package requires a Chemlogic distribution and its dependencies.
+	These files can be conveniently obtained from the chemlogic-android-distfiles Git repository (https://github.com/nicholaspaun/chemlogic-android-distfiles/), which should be cloned to the parent directory of this distribution. 
 
 
 
@@ -50,7 +47,7 @@ All of the features supported by Chemlogic are available in the cross-compiled A
 
 ## 4. Documentation ##
 
-All of the documentation (the Chemlogic papers) is distributed with the main Chemlogic package, in the `docs/` directory.
+All of the documentation (the Chemlogic papers) is distributed with the main Chemlogic package, in the `docs/` directory.  
 Copies of these files in PDF format are available online at: <http://icebergsystems.ca/projects/chemlogic>
 
 
