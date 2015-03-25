@@ -1,5 +1,5 @@
-
 /*
+*
 * Copyright (C) 2013-2014 Dominik Schürmann <dominik@dominikschuermann.de>
 * Copyright (C) 2013 Mohammed Lakkadshaw
 *
@@ -15,6 +15,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
+/** Some minor changes made by Nicholas Paun (2015). **/
+
 package ca.nicholaspaun.chemlogic.app1;
 import java.util.Vector;
 

@@ -1,3 +1,10 @@
+// AboutFragment.java: Displays copyright and version information for the Chemlogic app and enables access to some debugging features.
+// This file is from Chemlogic, a logic programming computer chemistry system  
+// <http://icebergsystems.ca/chemlogic>  
+// (C) Copyright 2012-2015 Nicholas Paun  
+
+
+
 package ca.nicholaspaun.chemlogic.app1;
 
 import android.content.Context;

@@ -1,3 +1,10 @@
+# Makefile: Rules to build and package the Chemlogic app for Android
+# This file is from Chemlogic, a logic programming computer chemistry system  
+# <http://icebergsystems.ca/chemlogic>  
+# (C) Copyright 2012-2015 Nicholas Paun  
+
+
+
 .PHONY: app install app-clean
 
 app:

@@ -1,6 +1,10 @@
-/**
- * 
- */
+// ChemlogicController.java: A Java API for Chemlogic that communicates over pipes with the Prolog code
+// This file is from Chemlogic, a logic programming computer chemistry system  
+// <http://icebergsystems.ca/chemlogic>  
+// (C) Copyright 2012-2015 Nicholas Paun  
+
+
+
 package ca.nicholaspaun.chemlogic.app1;
 
 import java.io.BufferedReader;

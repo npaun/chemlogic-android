@@ -1,3 +1,10 @@
+// BalancerFragment.java: The user interface for balancing chemical equations.
+// This file is from Chemlogic, a logic programming computer chemistry system  
+// <http://icebergsystems.ca/chemlogic>  
+// (C) Copyright 2012-2015 Nicholas Paun  
+
+
+
 package ca.nicholaspaun.chemlogic.app1;
 
 import android.content.Context;

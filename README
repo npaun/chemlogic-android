@@ -1,0 +1,90 @@
+% README  
+% This file is from Chemlogic, a logic programming computer chemistry system  
+% <http://icebergsystems.ca/chemlogic>  
+% (C) Copyright 2012-2015 Nicholas Paun  
+
+
+
+## Contents ##
+1. Usage and Installation
+2. Dependencies
+3. Features
+4. Documentation
+5. Changelog
+6. License
+7. Acknowledgements
+8. Contact
+
+
+
+## 1. Usage and Installation ##
+
+The Chemlogic app for Android consists of a Java user interface (built using the Android SDK) and the system package, which contains the cross-compiled Prolog code of Chemlogic and its runtime dependencies.
+
+To build the system package and install it into the App source directory:  
+	1. `make system system-install`
+
+To build the entire app:  
+	1. `make app`
+
+
+## 2. Dependencies ##
+
+The Chemlogic Android app is very complex and has a number of dependencies. 
+Building the app itself requires the Android SDK from Google.
+
+Building the system package requires:  
+	* A Chemlogic source distribution.
+	* SWI-Prolog and its dependencies (a linker, some POSIX libraries, GMP)
+
+These files can be conveniently obtained from the chemlogic-android-distfiles Git repository (https://github.com/nicholaspaun/chemlogic-android-distfiles/), which should be cloned to the parent directory of this distribution. 
+
+
+
+## 3. Features ##
+
+All of the features supported by Chemlogic are available in the cross-compiled Android version. The user-interface supports the following features:  
+* Compounder: Converts chemical names to formulas and vice-versa.
+* Balancer: Balances chemical equations in word or symbolic form.
+
+
+## 4. Documentation ##
+
+All of the documentation (the Chemlogic papers) is distributed with the main Chemlogic package, in the `docs/` directory.
+Copies of these files in PDF format are available online at: <http://icebergsystems.ca/projects/chemlogic>
+
+
+
+## 5. Changelog ##
+
+* Version 1.0.2
+	* Corrected some rendering issues affecting old versions of Android.
+* Version 1.0.1
+	* First release
+* Version 1.0.0
+	* Inital experiments
+
+
+
+## 6. License ##
+
+This program is licensed under the GNU Affero GPL v. 3, which requires modifications to programs offered publically as network services to be released.
+See `LICENSE`.
+
+If this requirement is inconvenient, please contact me.
+
+
+
+## 7. Acknowledgements ##
+
+I would like to thank the many people who gave advice and helped with the project.
+
+I am particularly grateful for the valuable assistance provided by Dr. Peter Tchir, my Physics, Chemistry and, now, Computer Science teacher. His help and advice, especially with algorithms and his support for my Computer Science projects helped make this program possible.
+
+The Chemlogic app includes software from SWI-Prolog, the GNU MP Library project and the Angstrom Distribution. This project could not have been developed without this open-source software.
+
+
+
+## 8. Contact ##
+
+Nicholas Paun <np@icebergsystems.ca>, <http://icebergsystems.ca>
