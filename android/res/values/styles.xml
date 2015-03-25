@@ -4,7 +4,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -13,9 +13,17 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="ChemlogicTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
+      <style name="SpinnerChemlogicTheme" parent="android:Widget.Spinner">
+      <item name="android:background">@drawable/chemlogictheme_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/chemlogictheme_list_selector_holo_light</item>
+  </style>
+
+  <style name="SpinnerDropDownItemChemlogicTheme" parent="android:Widget.DropDownItem.Spinner">
+      <item name="android:checkMark">@drawable/chemlogictheme_btn_radio_holo_light</item>
+  </style>
 
 </resources>

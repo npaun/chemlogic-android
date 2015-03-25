@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="ChemlogicTheme" parent="@style/_ChemlogicTheme"/>
+
+  <style name="_ChemlogicTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <item name="android:editTextStyle">@style/EditTextChemlogicTheme</item>
+
+    <item name="android:textColorHighlight">#9933b5e5</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxChemlogicTheme</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonChemlogicTheme</item>
+
+    <item name="android:buttonStyle">@style/ButtonChemlogicTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonChemlogicTheme</item>
+
+    <item name="android:spinnerStyle">@style/SpinnerChemlogicTheme</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemChemlogicTheme</item>
+
+  </style>
+
+</resources>
