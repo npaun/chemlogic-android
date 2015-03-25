@@ -10,9 +10,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -39,7 +37,7 @@ public class AboutFragment extends ChemlogicFragment {
 		populate_about(rootView);
 		populate_identity(rootView);
 
-		setup_devtoggle(rootView);
+		setup_devToggle(rootView);
 		setup_reset(rootView);
 		setup_stop(rootView);
 		setup_reinstall(rootView);
@@ -52,7 +50,7 @@ public class AboutFragment extends ChemlogicFragment {
 		return rootView;
 	}
 
-	public String version_get() {
+	private String version_get() {
 		String versionName = "unknown";
 
 		try {
@@ -66,7 +64,7 @@ public class AboutFragment extends ChemlogicFragment {
 
 	}
 
-	public void populate_about(View v) {
+	private void populate_about(View v) {
 		TextView aboutText = (TextView) v.findViewById(R.id.about_copyright);
 		aboutText.setText(Html.fromHtml(getString(R.string.about_copyright)
 				+ version_get()));
@@ -74,16 +72,16 @@ public class AboutFragment extends ChemlogicFragment {
 
 	}
 
-	public String fix_tabs(String input) {
+	private String fixTabs(String input) {
 		return (input.replace("\t", " "));
 	}
 
-	public void populate_identity(View v) {
+	private void populate_identity(View v) {
 		TextView identityText = (TextView) v.findViewById(R.id.about_identity);
-		identityText.setText(fix_tabs(ctrl.identify()));
+		identityText.setText(fixTabs(ctrl.identify()));
 	}
 
-	public void setup_devtoggle(View v) {
+	private void setup_devToggle(View v) {
 		final TextView button = (TextView) v
 				.findViewById(R.id.about_dev_toggle);
 		button.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +92,7 @@ public class AboutFragment extends ChemlogicFragment {
 		});
 	}
 
-	public void setup_reset(View v) {
+	private void setup_reset(View v) {
 		final Button button = (Button) v.findViewById(R.id.about_reset_prolog);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -105,7 +103,7 @@ public class AboutFragment extends ChemlogicFragment {
 		});
 	}
 
-	public void setup_stop(View v) {
+	private void setup_stop(View v) {
 		final Button button = (Button) v.findViewById(R.id.about_stop_prolog);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -114,7 +112,7 @@ public class AboutFragment extends ChemlogicFragment {
 		});
 	}
 
-	public void setup_reinstall(View v) {
+	private void setup_reinstall(View v) {
 		final Button button = (Button) v.findViewById(R.id.about_reinstall_app);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

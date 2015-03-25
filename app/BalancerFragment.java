@@ -5,16 +5,12 @@
 
 package ca.nicholaspaun.chemlogic.app1;
 
-import android.content.Context;
+import java.util.Locale;
+
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -51,12 +47,14 @@ public class BalancerFragment extends ChemlogicFragment {
 		Spinner inputTypeSpinner = (Spinner) getActivity().findViewById(
 				R.id.balancer_type_input);
 		String inputType = inputTypeSpinner.getSelectedItem().toString()
-				.toLowerCase();
+				.toLowerCase(Locale.ENGLISH); // "English" is only used to avoid
+											  // odd lowercasing in some languages.
 
 		Spinner outputTypeSpinner = (Spinner) getActivity().findViewById(
 				R.id.balancer_type_output);
 		String outputType = outputTypeSpinner.getSelectedItem().toString()
-				.toLowerCase();
+				.toLowerCase(Locale.ENGLISH); // "English" is only used to avoid
+											  // odd lowercasing in some languages.
 
 		EditText inputEdit = (EditText) getActivity().findViewById(
 				R.id.chemlogic_input);

@@ -17,15 +17,16 @@ public class ChemlogicController {
 	private BufferedReader read;
 	private BufferedWriter write;
 	private String chemlogic_ident;
-
-	public ChemlogicController() {
+	private String chemlogic_dir;
+	
+	public ChemlogicController(String directory) {
+		chemlogic_dir = directory;
 		init();
 	}
 
 	public void init() {
 		try {
-			Process proc = new ProcessBuilder(
-					"/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init")
+			Process proc = new ProcessBuilder(chemlogic_dir + "/system/etc/init")
 					.start();
 			read = new BufferedReader(new InputStreamReader(
 					proc.getInputStream()));
@@ -42,7 +43,6 @@ public class ChemlogicController {
 			write.write(line + ".\n");
 			write.flush();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

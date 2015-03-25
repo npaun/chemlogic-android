@@ -10,8 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -39,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
 
 		chemlogic_dir = getApplicationContext().getFilesDir().getPath();
 		installer_upgrade();
-		ctrl = new ChemlogicController();
+		ctrl = new ChemlogicController(chemlogic_dir);
 
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
@@ -53,12 +51,12 @@ public class MainActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		setup_menu_spinner(menu);
+		setupMenuSpinner(menu);
 
 		return true;
 	}
 
-	public void selectFragment(int id) {
+	private void selectFragment(int id) {
 		Log.i("chemlogic", "Hello, yes?");
 		Spinner fragmentSpinner = (Spinner) findViewById(id);
 		String fragment = "ca.nicholaspaun.chemlogic.app1."
@@ -79,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 
-	public void setup_menu_spinner(Menu menu) {
+	private void setupMenuSpinner(Menu menu) {
 		MenuItem SpinnerItem = menu.findItem(R.id.action_spinner);
 		Spinner spinner = (Spinner) MenuItemCompat.getActionView(SpinnerItem);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter
@@ -123,7 +121,7 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public boolean installer_checkVersion() {
+	private boolean installer_checkVersion() {
 		String versionName = "unknown";
 
 		try {
@@ -137,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
 				.exists());
 	}
 
-	public void installer_upgrade() {
+	private void installer_upgrade() {
 
 		if (!installer_checkVersion()) {
 			Log.i("chemlogic", "Upgrade required.");
