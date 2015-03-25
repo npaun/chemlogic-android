@@ -3,8 +3,6 @@
 // <http://icebergsystems.ca/chemlogic>  
 // (C) Copyright 2012-2015 Nicholas Paun  
 
-
-
 package ca.nicholaspaun.chemlogic.app1;
 
 import java.io.BufferedReader;
@@ -15,37 +13,31 @@ import java.io.OutputStreamWriter;
 
 import android.util.Log;
 
-/**
- * @author npaun
- *
- */
 public class ChemlogicController {
 	private BufferedReader read;
 	private BufferedWriter write;
 	private String chemlogic_ident;
-	
-	public ChemlogicController()
-	{
+
+	public ChemlogicController() {
 		init();
 	}
-	
-	public void init()
-	{
-		try
-		{
-		Process proc = new ProcessBuilder("/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init").start();
-    	read = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-    	write = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));
-		}
-		catch(Exception e)
-		{
+
+	public void init() {
+		try {
+			Process proc = new ProcessBuilder(
+					"/data/data/ca.nicholaspaun.chemlogic.app1/files/system/etc/init")
+					.start();
+			read = new BufferedReader(new InputStreamReader(
+					proc.getInputStream()));
+			write = new BufferedWriter(new OutputStreamWriter(
+					proc.getOutputStream()));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	private void write(String line)
-	{
-		Log.d("chemlogic","Command: " + line);
+
+	private void write(String line) {
+		Log.d("chemlogic", "Command: " + line);
 		try {
 			write.write(line + ".\n");
 			write.flush();
@@ -54,63 +46,52 @@ public class ChemlogicController {
 			e.printStackTrace();
 		}
 	}
-	
-	private String read()
-	{
-		try
-    	{
-      	String line;
-      	String message = "";
-    	while ((line = read.readLine()) != null && !line.startsWith("CL ?-")) {
-          message += line + "\n";
-        }
-    	return(message);
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    		return("[ChemlogicController.read] INTERNAL ERROR");
-    	}
 
-		
+	private String read() {
+		try {
+			String line;
+			String message = "";
+			while ((line = read.readLine()) != null
+					&& !line.startsWith("CL ?-")) {
+				message += line + "\n";
+			}
+			return (message);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ("[ChemlogicController.read] INTERNAL ERROR");
+		}
+
 	}
-	
-	private String escape(String str)
-	{
-		return(str.replace("\\","\\\\").replace("'","\\'"));
+
+	private String escape(String str) {
+		return (str.replace("\\", "\\\\").replace("'", "\\'"));
 	}
-	
-	public String command(String InputType, String Input,String OutputType)
-	{
-		write(InputType + " - '" + escape(Input) + "' :: " + OutputType + " print");
-		return(read());
+
+	public String command(String InputType, String Input, String OutputType) {
+		write(InputType + " - '" + escape(Input) + "' :: " + OutputType
+				+ " print");
+		return (read());
 	}
-	
-	public String command(String InputType, String Input)
-	{
+
+	public String command(String InputType, String Input) {
 		write(InputType + " - '" + escape(Input) + "' :: print");
-		return(read());
+		return (read());
 	}
-	
-	
-	public void acknowledge()
-	{
-      chemlogic_ident = read();
-      Log.i("chemlogic",chemlogic_ident);
-	}		
-	
-	public String identify()
-	{
-		return(chemlogic_ident);
+
+	public void acknowledge() {
+		chemlogic_ident = read();
+		Log.i("chemlogic", chemlogic_ident);
 	}
-	
-	public void halt()
-	{
+
+	public String identify() {
+		return (chemlogic_ident);
+	}
+
+	public void halt() {
 		write("halt");
 	}
-	
-	public void reset()
-	{
+
+	public void reset() {
 		halt();
 		init();
 	}
