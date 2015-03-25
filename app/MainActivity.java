@@ -57,7 +57,6 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	private void selectFragment(int id) {
-		Log.i("chemlogic", "Hello, yes?");
 		Spinner fragmentSpinner = (Spinner) findViewById(id);
 		String fragment = "ca.nicholaspaun.chemlogic.app1."
 				+ fragmentSpinner.getSelectedItem().toString() + "Fragment";
@@ -113,7 +112,6 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		Log.i("chemlogic", "Somting is happaning.");
 		if (id == R.id.action_spinner) {
 			// selectFragment(id);
 			return true;
